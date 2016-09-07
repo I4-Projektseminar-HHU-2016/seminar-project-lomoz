@@ -119,4 +119,12 @@
         android:layout_marginRight="30dp"
         android:onClick="specialsChecked" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SeekBar Value"
+        android:id="@+id/textViewSeekBar"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="100dp" />
+
 </FrameLayout>
