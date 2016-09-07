@@ -42,7 +42,8 @@
         android:text="Generate"
         android:id="@+id/button2"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="150dp" />
+        android:layout_marginBottom="150dp"
+        android:onClick="buttonClicked" />
 
     <TextView
         android:layout_width="166dp"
