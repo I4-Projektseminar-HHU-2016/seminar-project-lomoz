@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         if(checkBox.isChecked()){
 
             lowercaseOn = true;
+
+            System.out.println("Lowercase enthalten: ");
+            System.out.println(lowercaseOn);
         }
     }
 
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         if(checkBox.isChecked()){
 
             uppercaseOn = true;
+
+            System.out.println("Uppercase enthalten: ");
+            System.out.println(uppercaseOn);
         }
     }
 
@@ -51,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         if(checkBox.isChecked()){
 
             numbersOn = true;
+
+            System.out.println("Numbers enthalten: ");
+            System.out.println(numbersOn);
         }
     }
 
@@ -60,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         if(checkBox.isChecked()){
 
             specialsOn = true;
+
+            System.out.println("Specials enthalten: ");
+            System.out.println(specialsOn);
         }
     }
 }
