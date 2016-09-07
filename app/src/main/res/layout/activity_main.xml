@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    tools:context="com.example.lorcan.passwordgenerator.MainActivity">
+    tools:context="com.example.lorcan.passwordgenerator.MainActivity"
+    android:onClick="kleinbuchstabenChecked">
 
     <SeekBar
         android:layout_width="match_parent"
@@ -69,7 +70,8 @@
         android:layout_gravity="left|top"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="150dp" />
+        android:layout_marginTop="150dp"
+        android:onClick="kleinbuchstabenChecked" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -83,7 +85,8 @@
         android:layout_gravity="left|top"
         android:layout_marginTop="180dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:onClick="numbersChecked" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -96,7 +99,8 @@
         android:layout_toEndOf="@+id/checkBox"
         android:layout_gravity="right|top"
         android:layout_marginTop="150dp"
-        android:layout_marginRight="30dp" />
+        android:layout_marginRight="30dp"
+        android:onClick="großbuchstabenChecked" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -112,6 +116,7 @@
         android:layout_gravity="right|top"
         android:layout_marginTop="180dp"
         android:layout_marginBottom="30dp"
-        android:layout_marginRight="30dp" />
+        android:layout_marginRight="30dp"
+        android:onClick="specialsChecked" />
 
 </FrameLayout>
