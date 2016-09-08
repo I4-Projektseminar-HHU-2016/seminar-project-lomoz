@@ -1,6 +1,5 @@
 package com.example.lorcan.passwordgenerator;
 
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +9,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    SeekBar sb;
-    TextView valuetxt;
+
+    private static SeekBar seekBar;
+    private static TextView textViewSeekBarValue;
+    private static int seekBarValue = 0;
 
     private static boolean uppercaseOn = false;
     private static boolean lowercaseOn = false;
@@ -24,15 +25,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //commentary
 
-        sb = (SeekBar) findViewById(R.id.seekBar);
-        valuetxt = (TextView) findViewById(R.id.textViewSeekBar);
+        setSeekBar();
+    }
 
-        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+    // Von YouTube aus "Android Tutorial for Beginners 19 #SeekBar" von "ProgrammingKnowledge"
+    public void setSeekBar() {
+
+        seekBar = (SeekBar)findViewById(R.id.seekBar);
+        textViewSeekBarValue = (TextView)findViewById(R.id.textViewSeekBar);
+
+        seekBarValue = 0;
+
+        textViewSeekBarValue.setText(String.valueOf(seekBarValue));
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-                valuetxt.setText(String.valueOf(progress));
+                seekBarValue = progress;
+                textViewSeekBarValue.setText(String.valueOf(seekBarValue));
             }
 
             @Override
@@ -45,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
+
 
     public void buttonClicked(View v) {
 

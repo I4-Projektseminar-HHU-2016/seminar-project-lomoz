@@ -8,7 +8,7 @@
     android:onClick="kleinbuchstabenChecked">
 
     <SeekBar
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seekBar"
         android:layout_below="@+id/checkBox4"
@@ -22,7 +22,7 @@
         android:layout_gravity="center_horizontal|top" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="33dp"
         android:text="Wählen Sie die Passwort Länge"
         android:id="@+id/textView"
@@ -38,7 +38,7 @@
         android:layout_gravity="center_horizontal|top" />
 
     <Button
-        android:layout_width="173dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Generate"
         android:id="@+id/button2"
@@ -47,7 +47,7 @@
         android:onClick="buttonClicked" />
 
     <TextView
-        android:layout_width="166dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Passwort"
         android:id="@+id/textView2"
@@ -120,11 +120,12 @@
         android:onClick="specialsChecked" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="SeekBar Value"
         android:id="@+id/textViewSeekBar"
         android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="100dp"
+        android:textAlignment="center" />
 
 </FrameLayout>
