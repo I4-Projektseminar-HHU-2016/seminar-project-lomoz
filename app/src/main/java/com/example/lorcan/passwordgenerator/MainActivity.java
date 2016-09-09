@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
         seekBarValue = 8;
 
+        //Test
+        System.out.println(seekBarValue);
+
         textViewSeekBarValue.setText(String.valueOf(seekBarValue));
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
                 seekBarValue = (progress + 4);
                 textViewSeekBarValue.setText(String.valueOf(seekBarValue));
+
+                //Test
+                System.out.println(seekBarValue);
             }
 
             @Override
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public void buttonClicked(View v) {
 
         TextView tv = (TextView) findViewById(R.id.textView2);
-        tv.setText("New Password");
+        tv.setText("Password with length: " + seekBarValue);
         Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
     }
 
