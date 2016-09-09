@@ -61,7 +61,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kleinbuchstaben"
+        android:text="Großbuchstaben"
         android:id="@+id/checkBox"
         android:checked="false"
         android:layout_below="@+id/seekBar"
@@ -71,7 +71,8 @@
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="50dp"
         android:layout_marginTop="150dp"
-        android:onClick="kleinbuchstabenChecked" />
+        android:onClick="großbuchstabenChecked"
+        android:nestedScrollingEnabled="false" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -93,14 +94,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/checkBox2"
         android:checked="false"
-        android:text="Großbuchstaben"
+        android:text="Kleinbuchstaben"
         android:layout_alignTop="@+id/checkBox"
         android:layout_toRightOf="@+id/checkBox"
         android:layout_toEndOf="@+id/checkBox"
         android:layout_gravity="right|top"
         android:layout_marginTop="150dp"
         android:layout_marginRight="30dp"
-        android:onClick="großbuchstabenChecked" />
+        android:onClick="kleinbuchstabenChecked" />
 
     <CheckBox
         android:layout_width="wrap_content"

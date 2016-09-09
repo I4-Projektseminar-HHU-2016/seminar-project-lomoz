@@ -8,6 +8,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -24,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     private static String[] lowercaseStrings = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     private static String[] numbersStrings = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
     private static String[] specialsStrings = {"!", "?", "@", "(", ")", "{", "}", "[", "]", "/", "=", "~", "$", "%", "&", "#", "*", "-"};
+
+    private static ArrayList<String> passwordChars = new ArrayList<>();
+
+    private static int passwordCharsLength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.textView2);
         tv.setText("Password with length: " + seekBarValue);
         Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
+
+        fillPasswordArrayListChars();
     }
 
     public void kleinbuchstabenChecked(View v) {
@@ -155,5 +163,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /*
+     * Funktion, die eine ArrayList je nach gewählten Einstellungen
+     * der Checkboxes mit den entsprechenden Chars füllt.
+     */
+    public static void fillPasswordArrayListChars() {
+
+        passwordChars.clear();
+
+        if (uppercaseOn == true) {
+
+            for (int i = 0; i < uppercaseStrings.length; i++) {
+
+                passwordChars.add(uppercaseStrings[i]);
+            }
+        }
+
+        if (lowercaseOn == true) {
+
+            for (int i = 0; i < lowercaseStrings.length; i++) {
+
+                passwordChars.add(lowercaseStrings[i]);
+            }
+        }
+
+        if (numbersOn == true) {
+
+            for (int i = 0; i < numbersStrings.length; i++) {
+
+                passwordChars.add(numbersStrings[i]);
+            }
+        }
+
+        if (specialsOn == true) {
+
+            for (int i = 0; i < specialsStrings.length; i++) {
+
+                passwordChars.add(specialsStrings[i]);
+            }
+        }
+
+        System.out.println("\nArrayList mit allen ausgewählten Elementen: " + passwordChars + "\n");
+
+        passwordCharsLength = passwordChars.size();
+
+        System.out.println("Länge der ArrayList mit allen ausgewählten Elementen: " + passwordCharsLength + "\n");
+    }
 
 }
