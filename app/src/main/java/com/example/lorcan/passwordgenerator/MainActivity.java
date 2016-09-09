@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static boolean hasUppercase;
     private static boolean hasLowercase;
-    private static boolean hasNumbers;
-    private static boolean hasSpecials;
+    private static boolean hasNumber;
+    private static boolean hasSpecial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
 
         hasUppercase = !trialPassword.equals(trialPassword.toLowerCase());
 
-        System.out.println("Uppercase enthalten: " + hasUppercase + "\n");
+        System.out.println("Uppercase contained: " + hasUppercase + "\n");
 
         return hasUppercase;
     }
@@ -276,11 +276,22 @@ public class MainActivity extends AppCompatActivity {
 
         hasLowercase = !trialPassword.equals(trialPassword.toUpperCase());
 
-        System.out.println("Lowercase enthalten: " + hasLowercase + "\n");
+        System.out.println("Lowercase contained: " + hasLowercase + "\n");
 
         return hasLowercase;
     }
 
+    /*
+     * Gibt "true" zurück, wenn in "trialPassword"
+     * mindestens eine Zahl enthalten ist.
+     */
+    public static boolean checkNumbers() {
 
+        hasNumber = trialPassword.matches(".*\\d+.*");
+
+        System.out.println("Number contained: " + hasNumber + "\n");
+
+        return hasNumber;
+    }
 
 }
