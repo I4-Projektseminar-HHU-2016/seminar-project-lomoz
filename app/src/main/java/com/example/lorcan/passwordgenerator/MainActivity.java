@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private static SeekBar seekBar;
     private static TextView textViewSeekBarValue;
-    private static int seekBarValue = 0;
+    private static int seekBarValue;
 
     private static boolean uppercaseOn = false;
     private static boolean lowercaseOn = false;
@@ -35,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
         seekBar = (SeekBar)findViewById(R.id.seekBar);
         textViewSeekBarValue = (TextView)findViewById(R.id.textViewSeekBar);
 
-        seekBarValue = 0;
+        seekBar.setProgress(4);
+
+        seekBarValue = 8;
 
         textViewSeekBarValue.setText(String.valueOf(seekBarValue));
 
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-                seekBarValue = progress;
+                seekBarValue = (progress + 4);
                 textViewSeekBarValue.setText(String.valueOf(seekBarValue));
             }
 
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView tv = (TextView) findViewById(R.id.textView2);
         tv.setText("New Password");
+        Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
     }
 
     public void kleinbuchstabenChecked(View v) {
