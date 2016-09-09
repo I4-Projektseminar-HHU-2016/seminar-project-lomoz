@@ -34,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static String trialPassword = "";
 
+    private static boolean hasUppercase;
+    private static boolean hasLowercase;
+    private static boolean hasNumbers;
+    private static boolean hasSpecials;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -248,6 +253,19 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Not possible, choose at least one value!");
 
         }
+    }
+
+    /*
+     * Gibt "true" zurück, wenn in "trialPassword"
+     * mindestens ein Uppercase enthalten ist.
+     */
+    public static boolean checkUppercase() {
+
+        hasUppercase = !trialPassword.equals(trialPassword.toUpperCase());
+
+        System.out.println("Uppercase enthalten: " + hasUppercase + "\n");
+
+        return hasUppercase;
     }
 
 }
