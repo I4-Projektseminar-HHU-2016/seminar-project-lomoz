@@ -261,11 +261,26 @@ public class MainActivity extends AppCompatActivity {
      */
     public static boolean checkUppercase() {
 
-        hasUppercase = !trialPassword.equals(trialPassword.toUpperCase());
+        hasUppercase = !trialPassword.equals(trialPassword.toLowerCase());
 
         System.out.println("Uppercase enthalten: " + hasUppercase + "\n");
 
         return hasUppercase;
     }
+
+    /*
+     * Gibt "true" zurück, wenn in "trialPassword"
+     * mindestens ein Lowercase enthalten ist.
+     */
+    public static boolean checkLowercase() {
+
+        hasLowercase = !trialPassword.equals(trialPassword.toUpperCase());
+
+        System.out.println("Lowercase enthalten: " + hasLowercase + "\n");
+
+        return hasLowercase;
+    }
+
+
 
 }
