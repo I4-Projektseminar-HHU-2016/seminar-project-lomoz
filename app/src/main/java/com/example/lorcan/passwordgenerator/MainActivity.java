@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<String> passwordChars = new ArrayList<>();
 
     private static int passwordCharsLength;
+
+    private static String trialPassword = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +89,12 @@ public class MainActivity extends AppCompatActivity {
     public void buttonClicked(View v) {
 
         TextView tv = (TextView) findViewById(R.id.textView2);
-        tv.setText("Password with length: " + seekBarValue);
+        //tv.setText("Password with length: " + seekBarValue);
         Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
 
         fillPasswordArrayListChars();
+
+        tv.setText(trialPassword);
     }
 
     public void kleinbuchstabenChecked(View v) {
@@ -208,6 +213,41 @@ public class MainActivity extends AppCompatActivity {
         passwordCharsLength = passwordChars.size();
 
         System.out.println("Länge der ArrayList mit allen ausgewählten Elementen: " + passwordCharsLength + "\n");
+
+        makePassword();
+    }
+
+
+    /*
+     * Die Funktion erstellt ein "vorab Passwort".
+     * An Hand der zuvor gewählten Länge wird zufällig
+     * ein Element der ArrayList mit allen Chars erzeugt.
+     *
+     * Ob wirklich alle ausgewählten Paramenter mindestens
+     * ein Mal im generierten Passwort vorkommt, wird in der
+     * Funktion "checkPassword" geprüft.
+     * Diese wird am Ende aufgerufen.
+     */
+    public static void makePassword() {
+
+        try {
+
+            trialPassword = "";
+
+            for (int i = 0; i < seekBarValue; i++) {
+                Random randomizer = new Random();
+                String random = passwordChars.get(randomizer.nextInt(passwordChars.size()));
+                trialPassword = trialPassword + random;
+            }
+
+            System.out.println("Generated password: " + trialPassword + "\n");
+
+        } catch (IllegalArgumentException e) {
+
+            e.printStackTrace();
+            System.out.println("Not possible, choose at least one value!");
+
+        }
     }
 
 }
