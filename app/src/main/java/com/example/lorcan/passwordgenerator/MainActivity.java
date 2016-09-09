@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     private static boolean hasNumber;
     private static boolean hasSpecial;
 
+    private static boolean isValidPassword;
+
+    private static String finalPassword = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         fillPasswordArrayListChars();
 
-        tv.setText(trialPassword);
+        tv.setText(finalPassword);
     }
 
     public void kleinbuchstabenChecked(View v) {
@@ -247,6 +251,8 @@ public class MainActivity extends AppCompatActivity {
 
             System.out.println("Generated password: " + trialPassword + "\n");
 
+            checkPassword();
+
         } catch (IllegalArgumentException e) {
 
             e.printStackTrace();
@@ -300,11 +306,210 @@ public class MainActivity extends AppCompatActivity {
      */
     public static boolean checkSpecial() {
 
-        hasSpecial = trialPassword.matches("[A-Za-z0-9]*");
+        hasSpecial = !trialPassword.matches("[A-Za-z0-9]*");
 
         System.out.println("Special contained: " + hasSpecial + "\n");
 
         return hasSpecial;
+    }
+
+    /*
+     * Überprüft alle möglichen Kombinationen der Checkboxen.
+     * Wenn alle Parameter überinstimmen wird die boolische Varibale "isValidPassword" auf "true" gesetzt".
+     * Andernfalls wird "isValidPassword" auf "false" gesetzt.
+     *
+     * Am Ende wird überprüft ob "isValidPassword" den Wert "true" hat.
+     * Trifft dies zu, so wird "trailPassword" an "finalPassword" übergeben.
+     * Wenn nicht, dann wird "makePassword" wiederholt.
+     *
+     * Dies führt dazu, dass so lange ein Passwort erzeugt wird, bis eins existiert,
+     * welches allen gewählten Paramentern entspricht.
+     *
+     * Das fertige Passwort wird dann in der entsprechenden TextView angezeigt.
+     */
+    public static void checkPassword() {
+
+        checkUppercase();
+        checkLowercase();
+        checkNumber();
+        checkSpecial();
+
+        // Alle vier Werte auf "true"
+        if (uppercaseOn == true && lowercaseOn == true & numbersOn == true && specialsOn == true) {
+
+            if (hasUppercase == true && hasLowercase == true && hasNumber == true && hasSpecial == true) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Uppercase auf "false", sonst alles "true"
+        else if (uppercaseOn == false && lowercaseOn == true & numbersOn == true && specialsOn == true) {
+
+            if (hasUppercase == false && hasLowercase == true && hasNumber == true && hasSpecial == true) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Lowercase auf "false", sonst alles auf "true"
+        else if (uppercaseOn == true && lowercaseOn == false & numbersOn == true && specialsOn == true) {
+
+            if (hasUppercase == true && hasLowercase == false && hasNumber == true && hasSpecial == true) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Numbers auf "false", sonst alles auf "true"
+        else if (uppercaseOn == true && lowercaseOn == true & numbersOn == false && specialsOn == true) {
+
+            if (hasUppercase == true && hasLowercase == true && hasNumber == false && hasSpecial == true) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Specials auf "false", sonst alles auf "true"
+        if (uppercaseOn == true && lowercaseOn == true & numbersOn == true && specialsOn == false) {
+
+            if (hasUppercase == true && hasLowercase == true && hasNumber == true && hasSpecial == false) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Uppercase & Lowercase auf "false", Numbers & Specials auf "true"
+        else if (uppercaseOn == false && lowercaseOn == false & numbersOn == true && specialsOn == true) {
+
+            if (hasUppercase == false && hasLowercase == false && hasNumber == true && hasSpecial == true) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Uppercase & Numbers auf "false", Lowercase & Specials auf "true"
+        else if (uppercaseOn == false && lowercaseOn == true & numbersOn == false && specialsOn == true) {
+
+            if (hasUppercase == false && hasLowercase == true && hasNumber == false && hasSpecial == true) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Uppercase & Specials auf "false", Lowercase & Numbers auf "true"
+        else if (uppercaseOn == false && lowercaseOn == true & numbersOn == true && specialsOn == false) {
+
+            if (hasUppercase == false && hasLowercase == true && hasNumber == true && hasSpecial == false) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Lowercase & Numbers auf "false", Uppercase & Specials auf "true"
+        else if (uppercaseOn == true && lowercaseOn == false & numbersOn == false && specialsOn == true) {
+
+            if (hasUppercase == true && hasLowercase == false && hasNumber == false && hasSpecial == true) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Lowercase & Specials auf "false", Uppercase & Numbers auf "true"
+        else if (uppercaseOn == true && lowercaseOn == false & numbersOn == true && specialsOn == false) {
+
+            if (hasUppercase == true && hasLowercase == false && hasNumber == true && hasSpecial == false) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Numbers & Specials auf "false", Uppercase & Lowercase auf "true"
+        else if (uppercaseOn == true && lowercaseOn == true & numbersOn == false && specialsOn == false) {
+
+            if (hasUppercase == true && hasLowercase == true && hasNumber == false && hasSpecial == false) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Uppercase auf "true", sonst alles "false"
+        else if (uppercaseOn == true && lowercaseOn == false & numbersOn == false && specialsOn == false) {
+
+            if (hasUppercase == true && hasLowercase == false && hasNumber == false && hasSpecial == false) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Lowercase auf "true", sonst alles "false"
+        else if (uppercaseOn == false && lowercaseOn == true & numbersOn == false && specialsOn == false) {
+
+            if (hasUppercase == false && hasLowercase == true && hasNumber == false && hasSpecial == false) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Numbers auf "true", sonst alles "false"
+        else if (uppercaseOn == false && lowercaseOn == false & numbersOn == true && specialsOn == false) {
+
+            if (hasUppercase == false && hasLowercase == false && hasNumber == true && hasSpecial == false) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Specials auf "true", sonst alles "false"
+        else if (uppercaseOn == false && lowercaseOn == false & numbersOn == false && specialsOn == true) {
+
+            if (hasUppercase == false && hasLowercase == false && hasNumber == false && hasSpecial == true) {
+                isValidPassword = true;
+            }
+            else {
+                isValidPassword = false;
+            }
+        }
+
+        // Check boolean "isValidPassword"
+        if (isValidPassword == true) {
+            System.out.println("Alles gut\n");
+            System.out.println("------------------------------\n");
+            finalPassword = trialPassword;
+            System.out.println("Final password: " + finalPassword);
+        }
+        else {
+            makePassword();
+        }
+
     }
 
 }
