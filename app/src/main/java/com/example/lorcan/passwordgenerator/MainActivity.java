@@ -285,13 +285,26 @@ public class MainActivity extends AppCompatActivity {
      * Gibt "true" zurück, wenn in "trialPassword"
      * mindestens eine Zahl enthalten ist.
      */
-    public static boolean checkNumbers() {
+    public static boolean checkNumber() {
 
         hasNumber = trialPassword.matches(".*\\d+.*");
 
         System.out.println("Number contained: " + hasNumber + "\n");
 
         return hasNumber;
+    }
+
+    /*
+     * Gibt "true" zurück, wenn in "trialPassword"
+     * mindestens ein Sonderzeichen enthalten ist.
+     */
+    public static boolean checkSpecial() {
+
+        hasSpecial = trialPassword.matches("[A-Za-z0-9]*");
+
+        System.out.println("Special contained: " + hasSpecial + "\n");
+
+        return hasSpecial;
     }
 
 }
