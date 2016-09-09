@@ -86,8 +86,13 @@ public class MainActivity extends AppCompatActivity {
 
             lowercaseOn = true;
 
-            System.out.println("Lowercase enthalten: ");
-            System.out.println(lowercaseOn);
+            System.out.println("Lowercase enthalten: " + lowercaseOn);
+        }
+        else {
+
+            lowercaseOn = false;
+
+            System.out.println("Lowercase enthalten: " + lowercaseOn);
         }
     }
 
@@ -98,8 +103,13 @@ public class MainActivity extends AppCompatActivity {
 
             uppercaseOn = true;
 
-            System.out.println("Uppercase enthalten: ");
-            System.out.println(uppercaseOn);
+            System.out.println("Uppercase enthalten: " + uppercaseOn);
+        }
+        else {
+
+            uppercaseOn = false;
+
+            System.out.println("Uppercase enthalten: " + uppercaseOn);
         }
     }
 
@@ -110,8 +120,14 @@ public class MainActivity extends AppCompatActivity {
 
             numbersOn = true;
 
-            System.out.println("Numbers enthalten: ");
-            System.out.println(numbersOn);
+            System.out.println("Numbers enthalten: " + numbersOn);
+        }
+        else {
+
+            numbersOn = false;
+
+            System.out.println("Numbers enthalten: " + numbersOn);
+
         }
     }
 
@@ -122,8 +138,14 @@ public class MainActivity extends AppCompatActivity {
 
             specialsOn = true;
 
-            System.out.println("Specials enthalten: ");
-            System.out.println(specialsOn);
+            System.out.println("Specials enthalten: " + specialsOn);
+        }
+        else {
+
+            specialsOn = false;
+
+            System.out.println("Specials enthalten: " + specialsOn);
+
         }
     }
 
