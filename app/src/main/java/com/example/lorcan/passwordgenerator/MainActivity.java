@@ -3,6 +3,7 @@ package com.example.lorcan.passwordgenerator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private static SeekBar seekBar;
     private static TextView textViewSeekBarValue;
     private static int seekBarValue;
+
+    private static Button buttonCopyPassword;
 
     private static boolean uppercaseOn = false;
     private static boolean lowercaseOn = false;
@@ -95,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void buttonClicked(View v) {
+    public void buttonGeneratePasswordClicked(View v) {
 
         TextView tv = (TextView) findViewById(R.id.textViewPassword);
         //tv.setText("Password with length: " + seekBarValue);
@@ -104,6 +107,17 @@ public class MainActivity extends AppCompatActivity {
         fillPasswordArrayListChars();
 
         tv.setText(finalPassword);
+
+        buttonCopyPassword = (Button) findViewById(R.id.buttonCopyPassword);
+        buttonCopyPassword.setVisibility(View.VISIBLE);
+    }
+
+    public void buttonCopyPasswordClicked(View v) {
+
+        System.out.println("Button to Copy Password clicked!");
+        Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_LONG).show();
+
+
     }
 
     public void kleinbuchstabenChecked(View v) {
@@ -154,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
             numbersOn = false;
 
             System.out.println("Numbers enthalten: " + numbersOn);
-
         }
     }
 
@@ -172,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
             specialsOn = false;
 
             System.out.println("Specials enthalten: " + specialsOn);
-
         }
     }
 
@@ -257,7 +269,6 @@ public class MainActivity extends AppCompatActivity {
 
             e.printStackTrace();
             System.out.println("Not possible, choose at least one value!");
-
         }
     }
 

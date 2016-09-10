@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     tools:context="com.example.lorcan.passwordgenerator.MainActivity"
-    android:onClick="kleinbuchstabenChecked">
+    android:onClick="kleinbuchstabenChecked"
+    android:clickable="false">
 
     <SeekBar
         android:layout_width="fill_parent"
@@ -44,7 +45,7 @@
         android:id="@+id/buttonGeneratePassword"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="160dp"
-        android:onClick="buttonClicked" />
+        android:onClick="buttonGeneratePasswordClicked" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -61,7 +62,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Großbuchstaben"
+        android:text="Uppercase"
         android:id="@+id/checkBoxUppercase"
         android:checked="false"
         android:layout_below="@+id/seekBar"
@@ -77,7 +78,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zahlen"
+        android:text="Numbers"
         android:id="@+id/checkBoxNumbers"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -94,7 +95,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/checkBoxLowercase"
         android:checked="false"
-        android:text="Kleinbuchstaben"
+        android:text="Lowercase"
         android:layout_alignTop="@+id/checkBoxUppercase"
         android:layout_toRightOf="@+id/checkBoxUppercase"
         android:layout_toEndOf="@+id/checkBoxUppercase"
@@ -110,7 +111,7 @@
         android:layout_alignLeft="@+id/checkBoxLowercase"
         android:layout_alignStart="@+id/checkBoxLowercase"
         android:checked="false"
-        android:text="Sonderzeichen"
+        android:text="Specials"
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="false"
         android:layout_gravity="right|top"
@@ -134,6 +135,8 @@
         android:text="Copy Password"
         android:id="@+id/buttonCopyPassword"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="40dp" />
+        android:layout_marginBottom="40dp"
+        android:onClick="buttonCopyPasswordClicked"
+        android:visibility="invisible" />
 
 </FrameLayout>
