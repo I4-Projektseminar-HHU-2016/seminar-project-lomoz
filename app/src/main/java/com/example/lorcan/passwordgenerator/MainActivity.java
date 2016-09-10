@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonClicked(View v) {
 
-        TextView tv = (TextView) findViewById(R.id.textView2);
+        TextView tv = (TextView) findViewById(R.id.textViewPassword);
         //tv.setText("Password with length: " + seekBarValue);
         Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
 
