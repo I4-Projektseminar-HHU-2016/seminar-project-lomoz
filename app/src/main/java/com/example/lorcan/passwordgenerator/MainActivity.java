@@ -1,5 +1,7 @@
 package com.example.lorcan.passwordgenerator;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -115,9 +117,12 @@ public class MainActivity extends AppCompatActivity {
     public void buttonCopyPasswordClicked(View v) {
 
         System.out.println("Button to Copy Password clicked!");
+
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("copy password", finalPassword);
+        clipboardManager.setPrimaryClip(clipData);
+
         Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_LONG).show();
-
-
     }
 
     public void kleinbuchstabenChecked(View v) {
