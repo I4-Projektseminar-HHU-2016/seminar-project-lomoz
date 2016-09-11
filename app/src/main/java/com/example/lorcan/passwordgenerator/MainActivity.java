@@ -28,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
     private static boolean numbersOn = false;
     private static boolean specialsOn = false;
 
+    /*
+     * Nicht ganz sauber, da wenn eine CheckBox häufiger
+     * geklickt wird der Wert nicht nur einmal erhöht wird.
+     *
+     * Ist aber eigentlich egal, weil der Wert nur nie "0" sein darf.
+     * Diese Implementierung wird eventuell noch verändert.
+     */
+    private static int amountCheckboxesChecked = 0;
+
     private static String[] uppercaseStrings = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     private static String[] lowercaseStrings = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     private static String[] numbersStrings = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -102,16 +111,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonGeneratePasswordClicked(View v) {
 
-        TextView tv = (TextView) findViewById(R.id.textViewPassword);
-        //tv.setText("Password with length: " + seekBarValue);
-        Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
+        if (amountCheckboxesChecked == 0) {
 
-        fillPasswordArrayListChars();
+            Toast.makeText(MainActivity.this, "Choose at least one CheckBox!", Toast.LENGTH_LONG).show();
+            System.out.println("Checkboxes checked: " + amountCheckboxesChecked + "\n");
+        }
+        else {
 
-        tv.setText(finalPassword);
+            System.out.println("Checkboxes checked: " + amountCheckboxesChecked + "\n");
 
-        buttonCopyPassword = (Button) findViewById(R.id.buttonCopyPassword);
-        buttonCopyPassword.setVisibility(View.VISIBLE);
+            amountCheckboxesChecked = 0;
+
+            TextView tv = (TextView) findViewById(R.id.textViewPassword);
+            Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
+
+            fillPasswordArrayListChars();
+
+            tv.setText(finalPassword);
+
+            buttonCopyPassword = (Button) findViewById(R.id.buttonCopyPassword);
+            buttonCopyPassword.setVisibility(View.VISIBLE);
+        }
     }
 
     public void buttonCopyPasswordClicked(View v) {
@@ -125,23 +145,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_LONG).show();
     }
 
-    public void kleinbuchstabenChecked(View v) {
-        //code to check if this checkbox is checked!
-        CheckBox checkBox = (CheckBox) v;
-        if (checkBox.isChecked()) {
-
-            lowercaseOn = true;
-
-            System.out.println("Lowercase enthalten: " + lowercaseOn);
-        }
-        else {
-
-            lowercaseOn = false;
-
-            System.out.println("Lowercase enthalten: " + lowercaseOn);
-        }
-    }
-
     public void großbuchstabenChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
@@ -150,12 +153,33 @@ public class MainActivity extends AppCompatActivity {
             uppercaseOn = true;
 
             System.out.println("Uppercase enthalten: " + uppercaseOn);
+
+            amountCheckboxesChecked += 1;
         }
         else {
 
             uppercaseOn = false;
 
             System.out.println("Uppercase enthalten: " + uppercaseOn);
+        }
+    }
+
+    public void kleinbuchstabenChecked(View v) {
+        //code to check if this checkbox is checked!
+        CheckBox checkBox = (CheckBox) v;
+        if (checkBox.isChecked()) {
+
+            lowercaseOn = true;
+
+            System.out.println("Lowercase enthalten: " + lowercaseOn);
+
+            amountCheckboxesChecked += 1;
+        }
+        else {
+
+            lowercaseOn = false;
+
+            System.out.println("Lowercase enthalten: " + lowercaseOn);
         }
     }
 
@@ -167,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
             numbersOn = true;
 
             System.out.println("Numbers enthalten: " + numbersOn);
+
+            amountCheckboxesChecked += 1;
         }
         else {
 
@@ -184,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
             specialsOn = true;
 
             System.out.println("Specials enthalten: " + specialsOn);
+
+            amountCheckboxesChecked += 1;
         }
         else {
 
