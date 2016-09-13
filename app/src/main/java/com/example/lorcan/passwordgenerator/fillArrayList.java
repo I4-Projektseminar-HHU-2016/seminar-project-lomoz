@@ -10,8 +10,8 @@ public class FillArrayList {
     private static String[] specialsStrings = {"!", "?", "@", "(", ")", "{", "}", "[", "]", "/", "=", "~", "$", "%", "&", "#", "*", "-"};
 
     /*
-     * Funktion, die eine ArrayList je nach gewählten Einstellungen
-     * der Checkboxes mit den entsprechenden Chars füllt.
+     * Method, which fills an ArrayList with Chars
+     * equivalent to the CheckBoxes checked by the user.
      */
     public static void fillPasswordArrayListChars(ArrayList<String> passwordChars, boolean uppercaseOn, boolean lowercaseOn, boolean numbersOn, boolean specialsOn) {
 
@@ -19,9 +19,9 @@ public class FillArrayList {
 
         if (uppercaseOn) {
 
-            for (String uppercaseString : uppercaseStrings) {
+            for (int i = 0; i < uppercaseStrings.length; i++) {
 
-                passwordChars.add(uppercaseString);
+                passwordChars.add(uppercaseStrings[i]);
             }
         }
 

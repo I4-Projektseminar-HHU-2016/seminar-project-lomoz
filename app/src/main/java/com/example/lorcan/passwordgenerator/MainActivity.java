@@ -16,8 +16,6 @@ import java.util.Random;
 
 import static com.example.lorcan.passwordgenerator.FillArrayList.*;
 
-//import static com.example.lorcan.passwordgenerator.fillArrayList.fillPasswordArrayListChars;
-
 public class MainActivity extends AppCompatActivity {
 
     private static SeekBar seekBar;
@@ -56,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
         setSeekBar();
     }
 
-    // Von YouTube aus "Android Tutorial for Beginners 19 #SeekBar" von "ProgrammingKnowledge"
+    /*
+     * From YouTube: "Android Tutorial for Beginners 19 #SeekBar" by "ProgrammingKnowledge"
+     */
     public void setSeekBar() {
 
         seekBar = (SeekBar)findViewById(R.id.seekBar);
@@ -208,17 +208,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * Die Funktion erstellt ein "vorab Passwort".
-     * An Hand der zuvor gewählten Länge wird zufällig
-     * ein Element der ArrayList mit allen Chars erzeugt.
+     * The method generates, with the parameters chosen
+     * by the user, a trail password.
+     * It accords to the length of the SeekBar and chooses
+     * randomly from the ArrayList with all Chars.
      *
-     * Ob wirklich alle ausgewählten Paramenter mindestens
-     * ein Mal im generierten Passwort vorkommt, wird in der
-     * Funktion "checkPassword" geprüft.
-     * Diese wird am Ende aufgerufen.
+     * If every chosen parameter is at least once in the
+     * generated password will be checked by the method
+     * "checkPassword", which is called at the end.
      */
-
-
     public static void makePassword() {
 
         try {
@@ -243,8 +241,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * Gibt "true" zurück, wenn in "trialPassword"
-     * mindestens ein Uppercase enthalten ist.
+     * Returns "true", if "trialPassword"
+     * contains at least one uppercase.
      */
     public static boolean checkUppercase() {
 
@@ -256,8 +254,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * Gibt "true" zurück, wenn in "trialPassword"
-     * mindestens ein Lowercase enthalten ist.
+     * Returns "true", if "trialPassword"
+     * contains at least one lowercase.
      */
     public static boolean checkLowercase() {
 
@@ -269,8 +267,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * Gibt "true" zurück, wenn in "trialPassword"
-     * mindestens eine Zahl enthalten ist.
+     * Returns "true", if "trialPassword"
+     * contains at least one number.
      */
     public static boolean checkNumber() {
 
@@ -282,8 +280,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * Gibt "true" zurück, wenn in "trialPassword"
-     * mindestens ein Sonderzeichen enthalten ist.
+     * Returns "true", if "trialPassword"
+     * contains at least one special character.
      */
     public static boolean checkSpecial() {
 
@@ -295,18 +293,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * Überprüft alle möglichen Kombinationen der Checkboxen.
-     * Wenn alle Parameter überinstimmen wird die boolische Varibale "isValidPassword" auf "true" gesetzt".
-     * Andernfalls wird "isValidPassword" auf "false" gesetzt.
+     * Checks all possible combinations of the CheckBoxes.
+     * If all parameters accord, the boolean variable "isValidPassword" is set "true".
+     * Otherwise "isValidPassword" is set "false".
      *
-     * Am Ende wird überprüft ob "isValidPassword" den Wert "true" hat.
-     * Trifft dies zu, so wird "trailPassword" an "finalPassword" übergeben.
-     * Wenn nicht, dann wird "makePassword" wiederholt.
+     * At the end the method checks if "isValidPassword" has the value "true".
+     * If it applies, "trialPassword" is consigned to "finalPassword".
+     * If not, "makePassword" will be repeated.
      *
-     * Dies führt dazu, dass so lange ein Passwort erzeugt wird, bis eins existiert,
-     * welches allen gewählten Paramentern entspricht.
+     * As the result, there will be a new generated password, until one is generated,
+     * which fits all chosen parameters.
      *
-     * Das fertige Passwort wird dann in der entsprechenden TextView angezeigt.
+     * The final password will be displayed in the equivalent TextView.
      */
     public static void checkPassword() {
 
@@ -315,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
         checkNumber();
         checkSpecial();
 
-        // Alle vier Werte auf "true"
+        // All four Booleans set "true"
         if (uppercaseOn && lowercaseOn & numbersOn && specialsOn) {
 
             if (hasUppercase && hasLowercase && hasNumber && hasSpecial) {
@@ -326,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Uppercase auf "false", sonst alles "true"
+        // Uppercase set "false", everything else set "true"
         else if (!uppercaseOn && lowercaseOn & numbersOn && specialsOn) {
 
             if (!hasUppercase && hasLowercase && hasNumber && hasSpecial) {
@@ -337,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Lowercase auf "false", sonst alles auf "true"
+        // Lowercase set "false", everything else set "true"
         else if (uppercaseOn && !lowercaseOn & numbersOn && specialsOn) {
 
             if (hasUppercase && !hasLowercase && hasNumber && hasSpecial) {
@@ -348,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Numbers auf "false", sonst alles auf "true"
+        // Numbers set "false", everything else set "true"
         else if (uppercaseOn && lowercaseOn & !numbersOn && specialsOn) {
 
             if (hasUppercase && hasLowercase && !hasNumber && hasSpecial) {
@@ -359,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Specials auf "false", sonst alles auf "true"
+        // Specials set "false", everything else set "true"
         else if (uppercaseOn && lowercaseOn & numbersOn && !specialsOn) {
 
             if (hasUppercase && hasLowercase && hasNumber && !hasSpecial) {
@@ -370,7 +368,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Uppercase & Lowercase auf "false", Numbers & Specials auf "true"
+        // Uppercase & Lowercase set "false", Numbers & Specials set "true"
         else if (!uppercaseOn && !lowercaseOn & numbersOn && specialsOn) {
 
             if (!hasUppercase && !hasLowercase && hasNumber && hasSpecial) {
@@ -381,7 +379,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Uppercase & Numbers auf "false", Lowercase & Specials auf "true"
+        // Uppercase & Numbers set "false", Lowercase & Specials set "true"
         else if (!uppercaseOn && lowercaseOn & !numbersOn && specialsOn) {
 
             if (!hasUppercase && hasLowercase && !hasNumber && hasSpecial) {
@@ -392,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Uppercase & Specials auf "false", Lowercase & Numbers auf "true"
+        // Uppercase & Specials set "false", Lowercase & Numbers set "true"
         else if (!uppercaseOn && lowercaseOn & numbersOn && !specialsOn) {
 
             if (!hasUppercase && hasLowercase && hasNumber && !hasSpecial) {
@@ -403,7 +401,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Lowercase & Numbers auf "false", Uppercase & Specials auf "true"
+        // Lowercase & Numbers set "false", Uppercase & Specials set "true"
         else if (uppercaseOn && !lowercaseOn & !numbersOn && specialsOn) {
 
             if (hasUppercase && !hasLowercase && !hasNumber && hasSpecial) {
@@ -414,7 +412,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Lowercase & Specials auf "false", Uppercase & Numbers auf "true"
+        // Lowercase & Specials set "false", Uppercase & Numbers set "true"
         else if (uppercaseOn && !lowercaseOn & numbersOn && !specialsOn) {
 
             if (hasUppercase && !hasLowercase && hasNumber && !hasSpecial) {
@@ -425,7 +423,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Numbers & Specials auf "false", Uppercase & Lowercase auf "true"
+        // Numbers & Specials set "false", Uppercase & Lowercase set "true"
         else if (uppercaseOn && lowercaseOn & !numbersOn && !specialsOn) {
 
             if (hasUppercase && hasLowercase && !hasNumber && !hasSpecial) {
@@ -436,7 +434,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Uppercase auf "true", sonst alles "false"
+        // Uppercase set "true", everything else "false"
         else if (uppercaseOn && !lowercaseOn & !numbersOn && !specialsOn) {
 
             if (hasUppercase && !hasLowercase && !hasNumber && !hasSpecial) {
@@ -447,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Lowercase auf "true", sonst alles "false"
+        // Lowercase set "true", everything else "false"
         else if (!uppercaseOn && lowercaseOn & !numbersOn && !specialsOn) {
 
             if (!hasUppercase && hasLowercase && !hasNumber && !hasSpecial) {
@@ -458,7 +456,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Numbers auf "true", sonst alles "false"
+        // Numbers set "true", everything else "false"
         else if (!uppercaseOn && !lowercaseOn & numbersOn && !specialsOn) {
 
             if (!hasUppercase && !hasLowercase && hasNumber && !hasSpecial) {
@@ -469,7 +467,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Specials auf "true", sonst alles "false"
+        // Specials set "true", everything else set "false"
         else if (!uppercaseOn && !lowercaseOn & !numbersOn && specialsOn) {
 
             if (!hasUppercase && !hasLowercase && !hasNumber && hasSpecial) {
