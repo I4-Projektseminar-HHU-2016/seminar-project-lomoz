@@ -32,21 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private static boolean numbersOn = false;
     private static boolean specialsOn = false;
 
-    private static CheckBox checkBoxUppercase;
-    private static CheckBox checkBoxLowercase;
-    private static CheckBox checkBoxNumbers;
-    private static CheckBox checkBoxSpecials;
-
     private static boolean atLeastOneCheckboxChecked = false;
 
-    private static String[] uppercaseStrings = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    private static String[] lowercaseStrings = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-    private static String[] numbersStrings = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    private static String[] specialsStrings = {"!", "?", "@", "(", ")", "{", "}", "[", "]", "/", "=", "~", "$", "%", "&", "#", "*", "-"};
-
     private static ArrayList<String> passwordChars = new ArrayList<>();
-
-    private static int passwordCharsLength;
 
     private static String trialPassword = "";
 
@@ -112,20 +100,9 @@ public class MainActivity extends AppCompatActivity {
         textViewPassword= (TextView) findViewById(R.id.textViewPassword);
         buttonCopyPassword = (Button) findViewById(R.id.buttonCopyPassword);
 
-        checkBoxUppercase = (CheckBox)findViewById(R.id.checkBoxUppercase);
-        checkBoxLowercase = (CheckBox)findViewById(R.id.checkBoxLowercase);
-        checkBoxNumbers = (CheckBox)findViewById(R.id.checkBoxNumbers);
-        checkBoxSpecials = (CheckBox)findViewById(R.id.checkBoxSpecials);
+        atLeastOneCheckboxChecked = uppercaseOn || lowercaseOn || numbersOn || specialsOn;
 
-        if (checkBoxUppercase.isChecked() == true || checkBoxLowercase.isChecked() == true || checkBoxNumbers.isChecked() == true || checkBoxSpecials.isChecked() == true) {
-
-            atLeastOneCheckboxChecked = true;
-        }
-        else {
-            atLeastOneCheckboxChecked = false;
-        }
-
-        if (atLeastOneCheckboxChecked == false) {
+        if (!atLeastOneCheckboxChecked) {
 
             Toast.makeText(MainActivity.this, "Choose at least one CheckBox!", Toast.LENGTH_LONG).show();
             System.out.println("At least one CheckBox checked:  " + atLeastOneCheckboxChecked + "\n");
@@ -143,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             /*
              * From Class File "FillArrayList"
              */
-            fillPasswordArrayListChars(passwordChars, uppercaseOn, uppercaseStrings, lowercaseOn, lowercaseStrings, numbersOn, numbersStrings, specialsOn, specialsStrings, passwordCharsLength);
+            fillPasswordArrayListChars(passwordChars, uppercaseOn, lowercaseOn, numbersOn, specialsOn);
 
             textViewPassword.setText(finalPassword);
             buttonCopyPassword.setVisibility(View.VISIBLE);
@@ -231,58 +208,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * Funktion, die eine ArrayList je nach gewählten Einstellungen
-     * der Checkboxes mit den entsprechenden Chars füllt.
-     */
-    /*
-    public static void fillPasswordArrayListChars() {
-
-        passwordChars.clear();
-
-        if (uppercaseOn == true) {
-
-            for (int i = 0; i < uppercaseStrings.length; i++) {
-
-                passwordChars.add(uppercaseStrings[i]);
-            }
-        }
-
-        if (lowercaseOn == true) {
-
-            for (int i = 0; i < lowercaseStrings.length; i++) {
-
-                passwordChars.add(lowercaseStrings[i]);
-            }
-        }
-
-        if (numbersOn == true) {
-
-            for (int i = 0; i < numbersStrings.length; i++) {
-
-                passwordChars.add(numbersStrings[i]);
-            }
-        }
-
-        if (specialsOn == true) {
-
-            for (int i = 0; i < specialsStrings.length; i++) {
-
-                passwordChars.add(specialsStrings[i]);
-            }
-        }
-
-        System.out.println("\nArrayList mit allen ausgewählten Elementen: " + passwordChars + "\n");
-
-        passwordCharsLength = passwordChars.size();
-
-        System.out.println("Länge der ArrayList mit allen ausgewählten Elementen: " + passwordCharsLength + "\n");
-
-        makePassword();
-    }
-    */
-
-
-    /*
      * Die Funktion erstellt ein "vorab Passwort".
      * An Hand der zuvor gewählten Länge wird zufällig
      * ein Element der ArrayList mit allen Chars erzeugt.
@@ -292,6 +217,8 @@ public class MainActivity extends AppCompatActivity {
      * Funktion "checkPassword" geprüft.
      * Diese wird am Ende aufgerufen.
      */
+
+
     public static void makePassword() {
 
         try {
@@ -389,9 +316,9 @@ public class MainActivity extends AppCompatActivity {
         checkSpecial();
 
         // Alle vier Werte auf "true"
-        if (uppercaseOn == true && lowercaseOn == true & numbersOn == true && specialsOn == true) {
+        if (uppercaseOn && lowercaseOn & numbersOn && specialsOn) {
 
-            if (hasUppercase == true && hasLowercase == true && hasNumber == true && hasSpecial == true) {
+            if (hasUppercase && hasLowercase && hasNumber && hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -400,9 +327,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Uppercase auf "false", sonst alles "true"
-        else if (uppercaseOn == false && lowercaseOn == true & numbersOn == true && specialsOn == true) {
+        else if (!uppercaseOn && lowercaseOn & numbersOn && specialsOn) {
 
-            if (hasUppercase == false && hasLowercase == true && hasNumber == true && hasSpecial == true) {
+            if (!hasUppercase && hasLowercase && hasNumber && hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -411,9 +338,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Lowercase auf "false", sonst alles auf "true"
-        else if (uppercaseOn == true && lowercaseOn == false & numbersOn == true && specialsOn == true) {
+        else if (uppercaseOn && !lowercaseOn & numbersOn && specialsOn) {
 
-            if (hasUppercase == true && hasLowercase == false && hasNumber == true && hasSpecial == true) {
+            if (hasUppercase && !hasLowercase && hasNumber && hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -422,9 +349,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Numbers auf "false", sonst alles auf "true"
-        else if (uppercaseOn == true && lowercaseOn == true & numbersOn == false && specialsOn == true) {
+        else if (uppercaseOn && lowercaseOn & !numbersOn && specialsOn) {
 
-            if (hasUppercase == true && hasLowercase == true && hasNumber == false && hasSpecial == true) {
+            if (hasUppercase && hasLowercase && !hasNumber && hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -433,9 +360,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Specials auf "false", sonst alles auf "true"
-        if (uppercaseOn == true && lowercaseOn == true & numbersOn == true && specialsOn == false) {
+        else if (uppercaseOn && lowercaseOn & numbersOn && !specialsOn) {
 
-            if (hasUppercase == true && hasLowercase == true && hasNumber == true && hasSpecial == false) {
+            if (hasUppercase && hasLowercase && hasNumber && !hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -444,9 +371,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Uppercase & Lowercase auf "false", Numbers & Specials auf "true"
-        else if (uppercaseOn == false && lowercaseOn == false & numbersOn == true && specialsOn == true) {
+        else if (!uppercaseOn && !lowercaseOn & numbersOn && specialsOn) {
 
-            if (hasUppercase == false && hasLowercase == false && hasNumber == true && hasSpecial == true) {
+            if (!hasUppercase && !hasLowercase && hasNumber && hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -455,9 +382,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Uppercase & Numbers auf "false", Lowercase & Specials auf "true"
-        else if (uppercaseOn == false && lowercaseOn == true & numbersOn == false && specialsOn == true) {
+        else if (!uppercaseOn && lowercaseOn & !numbersOn && specialsOn) {
 
-            if (hasUppercase == false && hasLowercase == true && hasNumber == false && hasSpecial == true) {
+            if (!hasUppercase && hasLowercase && !hasNumber && hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -466,9 +393,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Uppercase & Specials auf "false", Lowercase & Numbers auf "true"
-        else if (uppercaseOn == false && lowercaseOn == true & numbersOn == true && specialsOn == false) {
+        else if (!uppercaseOn && lowercaseOn & numbersOn && !specialsOn) {
 
-            if (hasUppercase == false && hasLowercase == true && hasNumber == true && hasSpecial == false) {
+            if (!hasUppercase && hasLowercase && hasNumber && !hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -477,9 +404,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Lowercase & Numbers auf "false", Uppercase & Specials auf "true"
-        else if (uppercaseOn == true && lowercaseOn == false & numbersOn == false && specialsOn == true) {
+        else if (uppercaseOn && !lowercaseOn & !numbersOn && specialsOn) {
 
-            if (hasUppercase == true && hasLowercase == false && hasNumber == false && hasSpecial == true) {
+            if (hasUppercase && !hasLowercase && !hasNumber && hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -488,9 +415,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Lowercase & Specials auf "false", Uppercase & Numbers auf "true"
-        else if (uppercaseOn == true && lowercaseOn == false & numbersOn == true && specialsOn == false) {
+        else if (uppercaseOn && !lowercaseOn & numbersOn && !specialsOn) {
 
-            if (hasUppercase == true && hasLowercase == false && hasNumber == true && hasSpecial == false) {
+            if (hasUppercase && !hasLowercase && hasNumber && !hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -499,9 +426,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Numbers & Specials auf "false", Uppercase & Lowercase auf "true"
-        else if (uppercaseOn == true && lowercaseOn == true & numbersOn == false && specialsOn == false) {
+        else if (uppercaseOn && lowercaseOn & !numbersOn && !specialsOn) {
 
-            if (hasUppercase == true && hasLowercase == true && hasNumber == false && hasSpecial == false) {
+            if (hasUppercase && hasLowercase && !hasNumber && !hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -510,9 +437,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Uppercase auf "true", sonst alles "false"
-        else if (uppercaseOn == true && lowercaseOn == false & numbersOn == false && specialsOn == false) {
+        else if (uppercaseOn && !lowercaseOn & !numbersOn && !specialsOn) {
 
-            if (hasUppercase == true && hasLowercase == false && hasNumber == false && hasSpecial == false) {
+            if (hasUppercase && !hasLowercase && !hasNumber && !hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -521,9 +448,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Lowercase auf "true", sonst alles "false"
-        else if (uppercaseOn == false && lowercaseOn == true & numbersOn == false && specialsOn == false) {
+        else if (!uppercaseOn && lowercaseOn & !numbersOn && !specialsOn) {
 
-            if (hasUppercase == false && hasLowercase == true && hasNumber == false && hasSpecial == false) {
+            if (!hasUppercase && hasLowercase && !hasNumber && !hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -532,9 +459,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Numbers auf "true", sonst alles "false"
-        else if (uppercaseOn == false && lowercaseOn == false & numbersOn == true && specialsOn == false) {
+        else if (!uppercaseOn && !lowercaseOn & numbersOn && !specialsOn) {
 
-            if (hasUppercase == false && hasLowercase == false && hasNumber == true && hasSpecial == false) {
+            if (!hasUppercase && !hasLowercase && hasNumber && !hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -543,9 +470,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Specials auf "true", sonst alles "false"
-        else if (uppercaseOn == false && lowercaseOn == false & numbersOn == false && specialsOn == true) {
+        else if (!uppercaseOn && !lowercaseOn & !numbersOn && specialsOn) {
 
-            if (hasUppercase == false && hasLowercase == false && hasNumber == false && hasSpecial == true) {
+            if (!hasUppercase && !hasLowercase && !hasNumber && hasSpecial) {
                 isValidPassword = true;
             }
             else {
@@ -554,7 +481,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Check boolean "isValidPassword"
-        if (isValidPassword == true) {
+        if (isValidPassword) {
             System.out.println("Alles gut\n");
             System.out.println("------------------------------\n");
             finalPassword = trialPassword;
@@ -563,7 +490,5 @@ public class MainActivity extends AppCompatActivity {
         else {
             makePassword();
         }
-
     }
-
 }

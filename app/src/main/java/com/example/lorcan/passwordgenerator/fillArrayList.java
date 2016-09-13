@@ -2,29 +2,30 @@ package com.example.lorcan.passwordgenerator;
 
 import java.util.ArrayList;
 
-/**
- * Created by lorcan on 13.09.16.
- */
 public class FillArrayList {
+
+    private static String[] uppercaseStrings = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+    private static String[] lowercaseStrings = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+    private static String[] numbersStrings = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private static String[] specialsStrings = {"!", "?", "@", "(", ")", "{", "}", "[", "]", "/", "=", "~", "$", "%", "&", "#", "*", "-"};
 
     /*
      * Funktion, die eine ArrayList je nach gewählten Einstellungen
      * der Checkboxes mit den entsprechenden Chars füllt.
      */
-
-    public static void fillPasswordArrayListChars(ArrayList<String> passwordChars, boolean uppercaseOn, String[] uppercaseStrings, boolean lowercaseOn, String[] lowercaseStrings, boolean numbersOn, String[] numbersStrings, boolean specialsOn, String[] specialsStrings, int passwordCharsLength) {
+    public static void fillPasswordArrayListChars(ArrayList<String> passwordChars, boolean uppercaseOn, boolean lowercaseOn, boolean numbersOn, boolean specialsOn) {
 
         passwordChars.clear();
 
-        if (uppercaseOn == true) {
+        if (uppercaseOn) {
 
-            for (int i = 0; i < uppercaseStrings.length; i++) {
+            for (String uppercaseString : uppercaseStrings) {
 
-                passwordChars.add(uppercaseStrings[i]);
+                passwordChars.add(uppercaseString);
             }
         }
 
-        if (lowercaseOn == true) {
+        if (lowercaseOn) {
 
             for (int i = 0; i < lowercaseStrings.length; i++) {
 
@@ -32,7 +33,7 @@ public class FillArrayList {
             }
         }
 
-        if (numbersOn == true) {
+        if (numbersOn) {
 
             for (int i = 0; i < numbersStrings.length; i++) {
 
@@ -40,7 +41,7 @@ public class FillArrayList {
             }
         }
 
-        if (specialsOn == true) {
+        if (specialsOn) {
 
             for (int i = 0; i < specialsStrings.length; i++) {
 
@@ -48,11 +49,11 @@ public class FillArrayList {
             }
         }
 
-        System.out.println("\nArrayList mit allen ausgewählten Elementen: " + passwordChars + "\n");
+        System.out.println("\nArrayList with all chosen elements: " + passwordChars + "\n");
 
-        passwordCharsLength = passwordChars.size();
+        int passwordCharsLength = passwordChars.size();
 
-        System.out.println("Länge der ArrayList mit allen ausgewählten Elementen: " + passwordCharsLength + "\n");
+        System.out.println("Length of ArrayList with all chosen elements: " + passwordCharsLength + "\n");
 
         MainActivity.makePassword();
     }
