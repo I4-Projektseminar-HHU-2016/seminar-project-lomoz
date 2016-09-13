@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     tools:context="com.example.lorcan.passwordgenerator.MainActivity"
-    android:onClick="kleinbuchstabenChecked"
+    android:onClick="lowercaseChecked"
     android:clickable="false">
 
     <SeekBar
@@ -72,7 +72,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="50dp"
         android:layout_marginTop="150dp"
-        android:onClick="großbuchstabenChecked"
+        android:onClick="uppercaseChecked"
         android:nestedScrollingEnabled="false" />
 
     <CheckBox
@@ -102,7 +102,7 @@
         android:layout_gravity="right|top"
         android:layout_marginTop="150dp"
         android:layout_marginRight="30dp"
-        android:onClick="kleinbuchstabenChecked" />
+        android:onClick="lowercaseChecked" />
 
     <CheckBox
         android:layout_width="wrap_content"

@@ -14,6 +14,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.example.lorcan.passwordgenerator.FillArrayList.*;
+
+//import static com.example.lorcan.passwordgenerator.fillArrayList.fillPasswordArrayListChars;
+
 public class MainActivity extends AppCompatActivity {
 
     private static SeekBar seekBar;
@@ -64,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         setSeekBar();
     }
 
-
     // Von YouTube aus "Android Tutorial for Beginners 19 #SeekBar" von "ProgrammingKnowledge"
     public void setSeekBar() {
 
@@ -81,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
         textViewSeekBarValue.setText(String.valueOf(seekBarValue));
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
-
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -139,7 +140,10 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
 
-            fillPasswordArrayListChars();
+            /*
+             * From Class File "FillArrayList"
+             */
+            fillPasswordArrayListChars(passwordChars, uppercaseOn, uppercaseStrings, lowercaseOn, lowercaseStrings, numbersOn, numbersStrings, specialsOn, specialsStrings, passwordCharsLength);
 
             textViewPassword.setText(finalPassword);
             buttonCopyPassword.setVisibility(View.VISIBLE);
@@ -157,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_LONG).show();
     }
 
-    public void großbuchstabenChecked(View v) {
+    public void uppercaseChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
         if (checkBox.isChecked()) {
@@ -174,7 +178,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void kleinbuchstabenChecked(View v) {
+
+    public void lowercaseChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
         if (checkBox.isChecked()) {
@@ -229,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
      * Funktion, die eine ArrayList je nach gewählten Einstellungen
      * der Checkboxes mit den entsprechenden Chars füllt.
      */
+    /*
     public static void fillPasswordArrayListChars() {
 
         passwordChars.clear();
@@ -273,6 +279,7 @@ public class MainActivity extends AppCompatActivity {
 
         makePassword();
     }
+    */
 
 
     /*
