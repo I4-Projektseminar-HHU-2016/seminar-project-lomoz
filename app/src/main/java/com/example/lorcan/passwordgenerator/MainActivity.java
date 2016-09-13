@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
     public void uppercaseChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
+
         if (checkBox.isChecked()) {
 
             uppercaseOn = true;
@@ -154,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Uppercase enthalten: " + uppercaseOn);
         }
     }
-
 
     public void lowercaseChecked(View v) {
         //code to check if this checkbox is checked!
