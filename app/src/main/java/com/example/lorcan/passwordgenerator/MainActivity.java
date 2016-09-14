@@ -18,19 +18,13 @@ import static com.example.lorcan.passwordgenerator.FillArrayList.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static SeekBar seekBar;
     private static TextView textViewSeekBarValue;
     private static int seekBarValue;
-
-    private static Button buttonCopyPassword;
-    private static TextView textViewPassword;
 
     private static boolean uppercaseOn = false;
     private static boolean lowercaseOn = false;
     private static boolean numbersOn = false;
     private static boolean specialsOn = false;
-
-    private static boolean atLeastOneCheckboxChecked = false;
 
     private static ArrayList<String> passwordChars = new ArrayList<>();
 
@@ -59,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void setSeekBar() {
 
-        seekBar = (SeekBar)findViewById(R.id.seekBar);
+        SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
         textViewSeekBarValue = (TextView)findViewById(R.id.textViewSeekBar);
 
         seekBar.setProgress(4);
@@ -97,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonGeneratePasswordClicked(View v) {
 
-        textViewPassword= (TextView) findViewById(R.id.textViewPassword);
-        buttonCopyPassword = (Button) findViewById(R.id.buttonCopyPassword);
+        TextView textViewPassword = (TextView) findViewById(R.id.textViewPassword);
+        Button buttonCopyPassword = (Button) findViewById(R.id.buttonCopyPassword);
 
-        atLeastOneCheckboxChecked = uppercaseOn || lowercaseOn || numbersOn || specialsOn;
+        boolean atLeastOneCheckboxChecked = uppercaseOn || lowercaseOn || numbersOn || specialsOn;
 
         if (!atLeastOneCheckboxChecked) {
 
@@ -138,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_LONG).show();
     }
 
+
     public void uppercaseChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
@@ -156,6 +151,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public void uppercaseCheck() {
+
+        CheckBox checkBoxUppercase = (CheckBox) findViewById(R.id.checkBoxUppercase);
+
+        if (checkBoxUppercase.isChecked()) {
+
+            uppercaseOn = true;
+        }
+        else {
+
+            uppercaseOn = false;
+        }
+    }
+
+
     public void lowercaseChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
@@ -172,6 +183,22 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Lowercase enthalten: " + lowercaseOn);
         }
     }
+
+
+    public void lowercaseCheck() {
+
+        CheckBox checkBoxLowercase = (CheckBox) findViewById(R.id.checkBoxLowercase);
+
+        if (checkBoxLowercase.isChecked()) {
+
+            lowercaseOn = true;
+        }
+        else {
+
+            lowercaseOn = false;
+        }
+    }
+
 
     public void numbersChecked(View v) {
         //code to check if this checkbox is checked!
@@ -190,6 +217,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public void numbersCheck() {
+
+        CheckBox checkBoxNumbers = (CheckBox) findViewById(R.id.checkBoxNumbers);
+
+        if (checkBoxNumbers.isChecked()) {
+
+            numbersOn = true;
+        }
+        else {
+
+            numbersOn = false;
+        }
+    }
+
+
     public void specialsChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
@@ -206,6 +249,22 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Specials enthalten: " + specialsOn);
         }
     }
+
+
+    public void specialsCheck() {
+
+        CheckBox checkBoxSpecials = (CheckBox) findViewById(R.id.checkBoxSpecials);
+
+        if (checkBoxSpecials.isChecked()) {
+
+            specialsOn = true;
+        }
+        else {
+
+            specialsOn = false;
+        }
+    }
+
 
     /*
      * The method generates, with the parameters chosen
