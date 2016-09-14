@@ -14,8 +14,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static com.example.lorcan.passwordgenerator.FillArrayList.*;
-
 public class MainActivity extends AppCompatActivity {
 
     private static TextView textViewSeekBarValue;
@@ -99,15 +97,10 @@ public class MainActivity extends AppCompatActivity {
         if (!atLeastOneCheckboxChecked) {
 
             Toast.makeText(MainActivity.this, "Choose at least one CheckBox!", Toast.LENGTH_LONG).show();
-            System.out.println("At least one CheckBox checked:  " + atLeastOneCheckboxChecked + "\n");
-
             textViewPassword.setText("Password");
             buttonCopyPassword.setVisibility(View.INVISIBLE);
         }
         else {
-
-            System.out.println("At least one CheckBox checked:  " + atLeastOneCheckboxChecked + "\n");
-
 
             Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
 
@@ -120,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
             textViewPassword.setText(finalPassword);
             buttonCopyPassword.setVisibility(View.VISIBLE);
         }
+
+        System.out.println("At least one CheckBox checked:  " + atLeastOneCheckboxChecked + "\n");
+
     }
 
     public void buttonCopyPasswordClicked(View v) {
@@ -141,15 +137,14 @@ public class MainActivity extends AppCompatActivity {
         if (checkBox.isChecked()) {
 
             uppercaseOn = true;
-
-            System.out.println("Uppercase enthalten: " + uppercaseOn);
         }
         else {
 
             uppercaseOn = false;
-
-            System.out.println("Uppercase enthalten: " + uppercaseOn);
         }
+
+        System.out.println("Uppercase contained: " + uppercaseOn);
+
     }
 
 
@@ -159,15 +154,14 @@ public class MainActivity extends AppCompatActivity {
         if (checkBox.isChecked()) {
 
             lowercaseOn = true;
-
-            System.out.println("Lowercase enthalten: " + lowercaseOn);
         }
         else {
 
             lowercaseOn = false;
-
-            System.out.println("Lowercase enthalten: " + lowercaseOn);
         }
+
+        System.out.println("Lowercase contained: " + lowercaseOn);
+
     }
 
 
@@ -177,15 +171,14 @@ public class MainActivity extends AppCompatActivity {
         if (checkBox.isChecked()) {
 
             numbersOn = true;
-
-            System.out.println("Numbers enthalten: " + numbersOn);
         }
         else {
 
             numbersOn = false;
-
-            System.out.println("Numbers enthalten: " + numbersOn);
         }
+
+        System.out.println("Numbers contained: " + numbersOn);
+
     }
 
 
@@ -195,15 +188,14 @@ public class MainActivity extends AppCompatActivity {
         if (checkBox.isChecked()) {
 
             specialsOn = true;
-
-            System.out.println("Specials enthalten: " + specialsOn);
         }
         else {
 
             specialsOn = false;
-
-            System.out.println("Specials enthalten: " + specialsOn);
         }
+
+        System.out.println("Specials contained: " + specialsOn);
+
     }
 
     /*
