@@ -114,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
             /*
              * From Class File "FillArrayList"
              */
-            fillPasswordArrayListChars(passwordChars, uppercaseOn, lowercaseOn, numbersOn, specialsOn);
+            FillArrayList var = new FillArrayList();
+            var.fillPasswordArrayListChars(passwordChars, uppercaseOn, lowercaseOn, numbersOn, specialsOn);
 
             textViewPassword.setText(finalPassword);
             buttonCopyPassword.setVisibility(View.VISIBLE);
@@ -152,21 +153,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void uppercaseCheck() {
-
-        CheckBox checkBoxUppercase = (CheckBox) findViewById(R.id.checkBoxUppercase);
-
-        if (checkBoxUppercase.isChecked()) {
-
-            uppercaseOn = true;
-        }
-        else {
-
-            uppercaseOn = false;
-        }
-    }
-
-
     public void lowercaseChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
@@ -181,21 +167,6 @@ public class MainActivity extends AppCompatActivity {
             lowercaseOn = false;
 
             System.out.println("Lowercase enthalten: " + lowercaseOn);
-        }
-    }
-
-
-    public void lowercaseCheck() {
-
-        CheckBox checkBoxLowercase = (CheckBox) findViewById(R.id.checkBoxLowercase);
-
-        if (checkBoxLowercase.isChecked()) {
-
-            lowercaseOn = true;
-        }
-        else {
-
-            lowercaseOn = false;
         }
     }
 
@@ -218,21 +189,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void numbersCheck() {
-
-        CheckBox checkBoxNumbers = (CheckBox) findViewById(R.id.checkBoxNumbers);
-
-        if (checkBoxNumbers.isChecked()) {
-
-            numbersOn = true;
-        }
-        else {
-
-            numbersOn = false;
-        }
-    }
-
-
     public void specialsChecked(View v) {
         //code to check if this checkbox is checked!
         CheckBox checkBox = (CheckBox) v;
@@ -250,22 +206,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    public void specialsCheck() {
-
-        CheckBox checkBoxSpecials = (CheckBox) findViewById(R.id.checkBoxSpecials);
-
-        if (checkBoxSpecials.isChecked()) {
-
-            specialsOn = true;
-        }
-        else {
-
-            specialsOn = false;
-        }
-    }
-
-
     /*
      * The method generates, with the parameters chosen
      * by the user, a trail password.
@@ -276,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
      * generated password will be checked by the method
      * "checkPassword", which is called at the end.
      */
-    public static void makePassword() {
+    public void makePassword() {
 
         try {
 
@@ -365,7 +305,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * The final password will be displayed in the equivalent TextView.
      */
-    public static void checkPassword() {
+    public void checkPassword() {
 
         checkUppercase();
         checkLowercase();

@@ -13,7 +13,7 @@ public class FillArrayList {
      * Method, which fills an ArrayList with Chars
      * equivalent to the CheckBoxes checked by the user.
      */
-    public static void fillPasswordArrayListChars(ArrayList<String> passwordChars, boolean uppercaseOn, boolean lowercaseOn, boolean numbersOn, boolean specialsOn) {
+    public void fillPasswordArrayListChars(ArrayList<String> passwordChars, boolean uppercaseOn, boolean lowercaseOn, boolean numbersOn, boolean specialsOn) {
 
         passwordChars.clear();
 
@@ -55,7 +55,8 @@ public class FillArrayList {
 
         System.out.println("Length of ArrayList with all chosen elements: " + passwordCharsLength + "\n");
 
-        MainActivity.makePassword();
+        MainActivity var = new MainActivity();
+        var.makePassword();
     }
 
 }
