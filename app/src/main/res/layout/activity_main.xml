@@ -117,7 +117,9 @@
         android:layout_marginBottom="30dp"
         android:layout_marginRight="30dp"
         android:onClick="specialsChecked"
-        android:layout_alignLeft="@+id/checkBoxLowercase" />
+        android:layout_alignLeft="@+id/checkBoxLowercase"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false" />
 
     <TextView
         android:layout_width="fill_parent"
