@@ -109,7 +109,7 @@
         android:id="@+id/checkBoxSpecials"
         android:layout_alignStart="@+id/checkBoxLowercase"
         android:checked="false"
-        android:text="Specials"
+        android:text="Specials    "
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="false"
         android:layout_gravity="right|top"
