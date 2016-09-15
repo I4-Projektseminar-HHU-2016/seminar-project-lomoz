@@ -4,20 +4,20 @@
     tools:context = ".MainActivity">
 
     <item
-        android:id = "@+id/item_option1"
-        android:title = "Option1"
+        android:id = "@+id/item_option1_settings"
+        android:title = "Settings"
         />
     <item
-        android:id = "@+id/item_option2"
-        android:title = "Option2"
+        android:id = "@+id/item_option2_help"
+        android:title = "Help"
         />
     <item
-        android:id = "@+id/item_option3"
-        android:title = "Option3"
+        android:id = "@+id/item_option3_feedback"
+        android:title = "Feedback"
         />
     <item
-        android:id = "@+id/item_option4"
-        android:title = "Option4"
+        android:id = "@+id/item_option4_about"
+        android:title = "About"
         />
 
 

@@ -69,21 +69,21 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.item_option1:
+            case R.id.item_option1_settings:
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.item_option2:
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
-
-                break;
-
-            case R.id.item_option3:
+            case R.id.item_option2_help:
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
 
                 break;
 
-            case R.id.item_option4:
+            case R.id.item_option3_feedback:
+                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+
+                break;
+
+            case R.id.item_option4_about:
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
                 break;
         }
