@@ -4,6 +4,9 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -47,8 +50,50 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * From YouTube: "Android Tutorial for Beginners 19 #SeekBar" by "ProgrammingKnowledge"
+     * Options Menu Tutorial from:
+     * "Android Studio Tutorials - 32 : Options Menu in Android (Menu's)"
+     * by "rams android"
      */
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.item_option1:
+                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.item_option2:
+                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+
+                break;
+
+            case R.id.item_option3:
+                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+
+                break;
+
+            case R.id.item_option4:
+                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /*
+             * From YouTube: "Android Tutorial for Beginners 19 #SeekBar" by "ProgrammingKnowledge"
+             */
     public void setSeekBar() {
 
         SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
@@ -480,4 +525,5 @@ public class MainActivity extends AppCompatActivity {
             makePassword();
         }
     }
+
 }
