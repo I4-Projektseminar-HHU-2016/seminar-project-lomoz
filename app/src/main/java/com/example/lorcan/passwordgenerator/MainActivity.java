@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.item_option1_settings:
+
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getApplicationContext(), ActivitySettings.class));
@@ -78,17 +79,27 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.item_option2_help:
+
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getApplicationContext(), ActivityHelp.class));
 
                 break;
 
             case R.id.item_option3_feedback:
+
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getApplicationContext(), ActivityFeedback.class));
 
                 break;
 
             case R.id.item_option4_about:
+
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getApplicationContext(), ActivityAbout.class));
+
                 break;
         }
 

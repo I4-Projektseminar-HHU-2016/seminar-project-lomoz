@@ -15,7 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivitySettings"></activity>
+        <activity android:name=".ActivitySettings" />
+        <activity android:name=".ActivityHelp" />
+        <activity android:name=".ActivityEasyRemember" />
+        <activity android:name=".ActivitySafetyCheck" />
+        <activity android:name=".ActivityFeedback" />
+        <activity android:name=".ActivityAbout"></activity>
     </application>
 
 </manifest>

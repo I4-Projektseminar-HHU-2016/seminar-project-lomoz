@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="Safety Check"
         android:id="@+id/textView"
         android:layout_gravity="center"
         android:textAlignment="center"
@@ -39,7 +39,6 @@
         android:text="Check Safety"
         android:id="@+id/buttonCheckSafety"
         android:layout_gravity="right|top"
-        android:textSize="12dp"
-        android:onClick="buttonGoToCheckSafety" />
+        android:textSize="12dp" />
 
 </FrameLayout>

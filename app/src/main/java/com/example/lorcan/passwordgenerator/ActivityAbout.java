@@ -9,12 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class ActivitySettings extends AppCompatActivity {
+public class ActivityAbout extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_about);
     }
 
     @Override
@@ -31,7 +31,6 @@ public class ActivitySettings extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            /*
             case R.id.item_option1_settings:
 
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
@@ -39,7 +38,6 @@ public class ActivitySettings extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), ActivitySettings.class));
 
                 break;
-            */
 
             case R.id.item_option2_help:
 
@@ -57,6 +55,7 @@ public class ActivitySettings extends AppCompatActivity {
 
                 break;
 
+            /*
             case R.id.item_option4_about:
 
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
@@ -64,10 +63,12 @@ public class ActivitySettings extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), ActivityAbout.class));
 
                 break;
+            */
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     public void buttonGoToGeneratePassword(View v) {
 
@@ -83,6 +84,4 @@ public class ActivitySettings extends AppCompatActivity {
 
         startActivity(new Intent(getApplicationContext(), ActivitySafetyCheck.class));
     }
-
-
 }
