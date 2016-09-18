@@ -107,6 +107,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
+    public void buttonGoToGeneratePassword(View v) {
+
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
+    */
+
+    public void buttonGoToEasyPassword(View v) {
+
+        startActivity(new Intent(getApplicationContext(), ActivityEasyRemember.class));
+    }
+
+    public void buttonGoToCheckSafety(View v) {
+
+        startActivity(new Intent(getApplicationContext(), ActivitySafetyCheck.class));
+    }
+
+    /*
              * From YouTube: "Android Tutorial for Beginners 19 #SeekBar" by "ProgrammingKnowledge"
              */
     public void setSeekBar() {

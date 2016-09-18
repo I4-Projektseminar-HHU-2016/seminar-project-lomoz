@@ -7,12 +7,38 @@
     tools:context="com.example.lorcan.passwordgenerator.MainActivity"
     android:clickable="false">
 
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Password Generator"
+        android:id="@+id/buttonPWGenerator"
+        android:layout_gravity="left|top"
+        android:textSize="10dp" />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Easy to Remember"
+        android:id="@+id/buttonEasyPassword"
+        android:layout_gravity="center_horizontal|top"
+        android:textSize="10dp"
+        android:onClick="buttonGoToEasyPassword" />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Check Safety"
+        android:id="@+id/buttonCheckSafety"
+        android:layout_gravity="right|top"
+        android:textSize="12dp"
+        android:onClick="buttonGoToCheckSafety" />
+
     <SeekBar
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seekBar"
         android:layout_below="@+id/checkBoxSpecials"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="120dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/textViewChooseLength"
@@ -34,7 +60,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="false"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="85dp"
         android:layout_gravity="center_horizontal|top" />
 
     <Button
@@ -70,7 +96,7 @@
         android:layout_gravity="left|top"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="220dp"
         android:nestedScrollingEnabled="false"
         android:onClick="uppercaseChecked" />
 
@@ -84,7 +110,7 @@
         android:layout_alignParentStart="true"
         android:checked="false"
         android:layout_gravity="left|top"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="250dp"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="30dp"
         android:onClick="numbersChecked" />
@@ -99,7 +125,7 @@
         android:layout_toRightOf="@+id/checkBoxUppercase"
         android:layout_toEndOf="@+id/checkBoxUppercase"
         android:layout_gravity="right|top"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="220dp"
         android:layout_marginRight="30dp"
         android:onClick="lowercaseChecked" />
 
@@ -113,7 +139,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="false"
         android:layout_gravity="right|top"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="250dp"
         android:layout_marginBottom="30dp"
         android:layout_marginRight="30dp"
         android:onClick="specialsChecked"
@@ -127,7 +153,7 @@
         android:text="SeekBar Value"
         android:id="@+id/textViewSeekBar"
         android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="170dp"
         android:textAlignment="center" />
 
     <Button
