@@ -2,6 +2,7 @@ package com.example.lorcan.passwordgenerator;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -71,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.item_option1_settings:
                 Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getApplicationContext(), ActivitySettings.class));
+
                 break;
 
             case R.id.item_option2_help:
