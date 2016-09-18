@@ -8,19 +8,35 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivitySettings" />
-        <activity android:name=".ActivityHelp" />
-        <activity android:name=".ActivityEasyRemember" />
-        <activity android:name=".ActivitySafetyCheck" />
-        <activity android:name=".ActivityFeedback" />
-        <activity android:name=".ActivityAbout"></activity>
+
+        <activity
+            android:name=".ActivitySettings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityHelp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityEasyRemember"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivitySafetyCheck"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityFeedback"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAbout"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
