@@ -13,13 +13,18 @@ import android.widget.Toast;
 
 public class ActivityEasyRemember extends AppCompatActivity {
 
-    private static int screenWidth = 0;
-    private static int buttonWidth = 0;
+    private static Button buttonPasswordGenerator;
+    private static Button buttonEasyPassword;
+    private static Button buttonCheckSafety;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setScreenWidth();
+        buttonPasswordGenerator = (Button)findViewById(R.id.buttonPWGenerator);
+        buttonEasyPassword = (Button)findViewById(R.id.buttonEasyPassword);
+        buttonCheckSafety = (Button)findViewById(R.id.buttonCheckSafety);
+
+        setButtonWidth();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_easy_remember);
@@ -93,31 +98,26 @@ public class ActivityEasyRemember extends AppCompatActivity {
     }
 
 
-    public void setScreenWidth() {
+    public void setButtonWidth() {
 
         try {
 
-            screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
             System.out.println("Screen width: " + screenWidth);
 
-            buttonWidth = (screenWidth / 3);
+        int buttonWidth = (screenWidth / 3);
             System.out.println("Button width: " + buttonWidth);
 
-            Button buttonPasswordGenerator = (Button)findViewById(R.id.buttonPWGenerator);
             buttonPasswordGenerator.setWidth(buttonWidth);
-
-            Button buttonEasyPassword = (Button)findViewById(R.id.buttonEasyPassword);
             buttonEasyPassword.setWidth(buttonWidth);
-
-            Button buttonCheckSafety = (Button)findViewById(R.id.buttonCheckSafety);
             buttonCheckSafety.setWidth(buttonWidth);
+
 
         } catch (NullPointerException e) {
 
             e.printStackTrace();
             System.out.println("Caught NullPointerException!!");
         }
-
-
     }
+
 }
