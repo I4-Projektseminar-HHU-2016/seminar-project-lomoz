@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,21 +15,13 @@ import android.widget.Toast;
 
 public class ActivityEasyRemember extends AppCompatActivity {
 
-    private static Button buttonPasswordGenerator;
-    private static Button buttonEasyPassword;
-    private static Button buttonCheckSafety;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        buttonPasswordGenerator = (Button)findViewById(R.id.buttonPWGenerator);
-        buttonEasyPassword = (Button)findViewById(R.id.buttonEasyPassword);
-        buttonCheckSafety = (Button)findViewById(R.id.buttonCheckSafety);
-
-        setButtonWidth();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_easy_remember);
+
+        setButtonWidth();
     }
 
     @Override
@@ -102,16 +96,20 @@ public class ActivityEasyRemember extends AppCompatActivity {
 
         try {
 
-        int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+            Button buttonPasswordGenerator = (Button) findViewById(R.id.buttonPWGenerator);
+            Button buttonEasyPassword = (Button) findViewById(R.id.buttonEasyPassword);
+            Button buttonCheckSafety = (Button) findViewById(R.id.buttonCheckSafety);
+
+            int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
             System.out.println("Screen width: " + screenWidth);
 
-        int buttonWidth = (screenWidth / 3);
+            int buttonWidth = (screenWidth / 3);
+
             System.out.println("Button width: " + buttonWidth);
 
             buttonPasswordGenerator.setWidth(buttonWidth);
             buttonEasyPassword.setWidth(buttonWidth);
             buttonCheckSafety.setWidth(buttonWidth);
-
 
         } catch (NullPointerException e) {
 
@@ -119,5 +117,4 @@ public class ActivityEasyRemember extends AppCompatActivity {
             System.out.println("Caught NullPointerException!!");
         }
     }
-
 }

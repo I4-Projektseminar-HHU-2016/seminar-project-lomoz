@@ -3,6 +3,7 @@ package com.example.lorcan.passwordgenerator;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //commentary
+
+        setButtonWidth();
 
         setSeekBar();
     }
@@ -121,6 +124,32 @@ public class MainActivity extends AppCompatActivity {
     public void buttonGoToCheckSafety(View v) {
 
         startActivity(new Intent(getApplicationContext(), ActivitySafetyCheck.class));
+    }
+
+    public void setButtonWidth() {
+
+        try {
+
+            Button buttonPasswordGenerator = (Button) findViewById(R.id.buttonPWGenerator);
+            Button buttonEasyPassword = (Button) findViewById(R.id.buttonEasyPassword);
+            Button buttonCheckSafety = (Button) findViewById(R.id.buttonCheckSafety);
+
+            int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+            System.out.println("Screen width: " + screenWidth);
+
+            int buttonWidth = (screenWidth / 3);
+
+            System.out.println("Button width: " + buttonWidth);
+
+            buttonPasswordGenerator.setWidth(buttonWidth);
+            buttonEasyPassword.setWidth(buttonWidth);
+            buttonCheckSafety.setWidth(buttonWidth);
+
+        } catch (NullPointerException e) {
+
+            e.printStackTrace();
+            System.out.println("Caught NullPointerException!!");
+        }
     }
 
     /*
