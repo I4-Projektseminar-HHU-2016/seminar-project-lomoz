@@ -1,18 +1,26 @@
 package com.example.lorcan.passwordgenerator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class ActivityEasyRemember extends AppCompatActivity {
 
+    private static int screenWidth = 0;
+    private static int buttonWidth = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setScreenWidth();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_easy_remember);
     }
@@ -82,5 +90,34 @@ public class ActivityEasyRemember extends AppCompatActivity {
     public void buttonGoToCheckSafety(View v) {
 
         startActivity(new Intent(getApplicationContext(), ActivitySafetyCheck.class));
+    }
+
+
+    public void setScreenWidth() {
+
+        try {
+
+            screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+            System.out.println("Screen width: " + screenWidth);
+
+            buttonWidth = (screenWidth / 3);
+            System.out.println("Button width: " + buttonWidth);
+
+            Button buttonPasswordGenerator = (Button)findViewById(R.id.buttonPWGenerator);
+            buttonPasswordGenerator.setWidth(buttonWidth);
+
+            Button buttonEasyPassword = (Button)findViewById(R.id.buttonEasyPassword);
+            buttonEasyPassword.setWidth(buttonWidth);
+
+            Button buttonCheckSafety = (Button)findViewById(R.id.buttonCheckSafety);
+            buttonCheckSafety.setWidth(buttonWidth);
+
+        } catch (NullPointerException e) {
+
+            e.printStackTrace();
+            System.out.println("Caught NullPointerException!!");
+        }
+
+
     }
 }
