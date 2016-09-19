@@ -1,12 +1,14 @@
 package com.example.lorcan.passwordgenerator;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class ActivitySettings extends AppCompatActivity {
@@ -15,6 +17,8 @@ public class ActivitySettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        setButtonWidth();
     }
 
     @Override
@@ -82,6 +86,32 @@ public class ActivitySettings extends AppCompatActivity {
     public void buttonGoToCheckSafety(View v) {
 
         startActivity(new Intent(getApplicationContext(), ActivitySafetyCheck.class));
+    }
+
+    public void setButtonWidth() {
+
+        try {
+
+            Button buttonPasswordGenerator = (Button) findViewById(R.id.buttonPWGenerator);
+            Button buttonEasyPassword = (Button) findViewById(R.id.buttonEasyPassword);
+            Button buttonCheckSafety = (Button) findViewById(R.id.buttonCheckSafety);
+
+            int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+            System.out.println("Screen width: " + screenWidth);
+
+            int buttonWidth = (screenWidth / 3);
+
+            System.out.println("Button width: " + buttonWidth);
+
+            buttonPasswordGenerator.setWidth(buttonWidth);
+            buttonEasyPassword.setWidth(buttonWidth);
+            buttonCheckSafety.setWidth(buttonWidth);
+
+        } catch (NullPointerException e) {
+
+            e.printStackTrace();
+            System.out.println("Caught NullPointerException!!");
+        }
     }
 
 
