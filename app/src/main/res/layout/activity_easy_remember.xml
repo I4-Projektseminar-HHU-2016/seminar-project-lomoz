@@ -5,16 +5,6 @@
     android:layout_height="fill_parent"
     tools:context="com.example.lorcan.passwordgenerator.ActivitySettings">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Easy to Remember"
-        android:id="@+id/textView"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:textColor="@android:color/black" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,5 +33,75 @@
         android:textSize="10dp"
         android:onClick="buttonGoToCheckSafety"
         android:background="@drawable/my_button" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Chose a seperator"
+        android:id="@+id/textViewChoseSeperator"
+        android:layout_gravity="top|center_horizontal"
+        android:textAlignment="center"
+        android:textSize="14dp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="85dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Generate"
+        android:id="@+id/buttonGenerateEasyPassword"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="160dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Easy Password"
+        android:id="@+id/textViewEasyPassword"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="110dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Copy Password"
+        android:id="@+id/buttonCopyEasyPassword"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="40dp"
+        android:visibility="invisible" />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#"
+            android:id="@+id/radioButtonHash"
+            android:layout_gravity="center_horizontal" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&amp;"
+            android:id="@+id/radioButtonAnd"
+            android:layout_gravity="center_horizontal" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:id="@+id/radioButtonPlus"
+            android:layout_gravity="center_horizontal" />
+
+    </RadioGroup>
 
 </FrameLayout>
