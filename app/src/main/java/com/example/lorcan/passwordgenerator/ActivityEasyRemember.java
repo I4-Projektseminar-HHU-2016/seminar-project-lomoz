@@ -1,5 +1,7 @@
 package com.example.lorcan.passwordgenerator;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +12,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class ActivityEasyRemember extends AppCompatActivity {
+
+    private static ArrayList<String> arrayListWords = new ArrayList<>();
+
+    private static String separator = "";
+
+    private static String easyPassword = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,12 +143,20 @@ public class ActivityEasyRemember extends AppCompatActivity {
         else {
             Toast.makeText(ActivityEasyRemember.this, "Choose one RadioButton!", Toast.LENGTH_LONG).show();
         }
+    }
 
+    public void buttonCopyEasyPasswordClicked(View v) {
+
+        System.out.println("Button to Copy Easy Password clicked!");
+
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("copy easy password", easyPassword);
+        clipboardManager.setPrimaryClip(clipData);
+
+        Toast.makeText(ActivityEasyRemember.this, "Easy Password copied!", Toast.LENGTH_LONG).show();
     }
 
     public void getClickedRadioButton(RadioButton radioButtonHash, RadioButton radioButtonAnd, RadioButton radioButtonPlus) {
-
-        String separator = "";
 
         if (radioButtonHash.isChecked()) {
             separator = "#";
@@ -152,5 +172,63 @@ public class ActivityEasyRemember extends AppCompatActivity {
 
         System.out.println("Chosen separator: " + separator);
 
+
+        addToArrayList();
+    }
+
+    public void addToArrayList() {
+
+        arrayListWords.clear();
+
+        String[] nouns = {
+
+                "time",	"issue", "year", "side", "people", "kind", "way", "head", "day", "house", "man", "service",
+                "thing", "friend", "woman", "father", "life", "power", "child", "hour", "world", "game", "school",
+                "state", "end", "family", "member", "student", "law", "group", "car", "country", "city", "problem",
+                "community", "hand", "name", "part", "president", "place", "team", "case", "minute", "week", "idea",
+                "company", "kid", "system", "body", "program", "information", "question", "back", "work", "parent",
+                "government", "face", "number", "others", "night", "level", "Mr", "office", "point", "door", "home",
+                "health", "water", "person", "room", "art", "mother", "war", "area", "history", "money", "party",
+                "storey", "result", "fact", "change", "month", "morning", "lot", "reason", "right", "research", "line",
+                "girl", "book", "guy", "eye", "food", "job", "moment", "word", "air", "business", "teacher", "study"
+        };
+
+        for (int i = 0; i <nouns.length; i++) {
+
+            arrayListWords.add(nouns[i]);
+        }
+
+        System.out.println(arrayListWords);
+
+        makeEasyPassword();
+
+    }
+
+    public void makeEasyPassword() {
+
+        easyPassword = "";
+
+        for (int i = 0; i < 3; i++) {
+            Random randomizer = new Random();
+            String random = arrayListWords.get(randomizer.nextInt(arrayListWords.size()));
+            easyPassword += random;
+            easyPassword += separator;
+        }
+
+        easyPassword = easyPassword.substring(0, (easyPassword.length() - 1));
+
+        System.out.println(easyPassword);
+
+        displayEasyPassword();
+    }
+
+    public void displayEasyPassword() {
+
+        Button buttonCopyEasyPassword = (Button)findViewById(R.id.buttonCopyEasyPassword);
+
+        TextView textViewEasyPassword = (TextView)findViewById(R.id.textViewEasyPassword);
+        textViewEasyPassword.setText(easyPassword);
+
+        buttonCopyEasyPassword.setVisibility(View.VISIBLE);
     }
 }
