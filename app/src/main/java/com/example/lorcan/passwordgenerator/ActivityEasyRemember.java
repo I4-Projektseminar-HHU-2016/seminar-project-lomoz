@@ -180,6 +180,11 @@ public class ActivityEasyRemember extends AppCompatActivity {
 
         arrayListWords.clear();
 
+        /*
+         * 100 Most Common English Nouns
+         * from "http://www.linguasorb.com/english/most-common-nouns/"
+         */
+
         String[] nouns = {
 
                 "time",	"issue", "year", "side", "people", "kind", "way", "head", "day", "house", "man", "service",
