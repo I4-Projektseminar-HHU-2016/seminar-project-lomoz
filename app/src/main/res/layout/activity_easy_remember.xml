@@ -13,7 +13,7 @@
         android:layout_gravity="left|top"
         android:textSize="10dp"
         android:onClick="buttonGoToGeneratePassword"
-        android:background="@drawable/my_button" />
+        android:background="@android:color/holo_blue_light" />
 
     <Button
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
         android:id="@+id/buttonEasyPassword"
         android:layout_gravity="center_horizontal|top"
         android:textSize="10dp"
-        android:background="@drawable/my_button_clicked" />
+        android:background="@android:color/holo_blue_dark" />
 
     <Button
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_gravity="right|top"
         android:textSize="10dp"
         android:onClick="buttonGoToCheckSafety"
-        android:background="@drawable/my_button" />
+        android:background="@android:color/holo_blue_light" />
 
     <TextView
         android:layout_width="fill_parent"
