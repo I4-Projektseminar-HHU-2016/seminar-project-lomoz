@@ -9,9 +9,37 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class ActivitySafetyCheck extends AppCompatActivity {
+
+    private static String password;
+
+    private static boolean hasUppercase = false;
+    private static boolean hasLowercase = false;
+    private static boolean hasNumber = false;
+    private static boolean hasSpecial= false;
+
+    private static String[] uppercaseStrings = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+    private static String[] lowercaseStrings = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+    private static String[] numbersStrings = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private static String[] specialsStrings = {"!", "?", "@", "(", ")", "{", "}", "[", "]", "/", "=", "~", "$", "%", "&", "#", "*", "-"};
+
+    private static ArrayList<String> passwordChars = new ArrayList<>();
+
+    private static int passwordLength;
+
+    private static String time;
+
+    private static int hours;
+    private static int minutes;
+    private static int seconds;
+
+    private static int securityLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,5 +140,146 @@ public class ActivitySafetyCheck extends AppCompatActivity {
             e.printStackTrace();
             System.out.println("Caught NullPointerException!!");
         }
+    }
+
+    public void buttonCheckPasswordSecurity(View v) {
+
+        EditText editTextPassword = (EditText)findViewById(R.id.editTextPassword);
+
+        password = editTextPassword.getText().toString();
+
+        if (password.length() == 0) {
+            Toast.makeText(ActivitySafetyCheck.this, "No Password entered!", Toast.LENGTH_LONG).show();
+        }
+
+        System.out.println("password: " + password);
+
+        passwordLength = password.length();
+        System.out.println("password length: " + passwordLength);
+
+        checkPassword();
+
+
+
+        //System.out.println(passwordChars);
+
+
+    }
+
+    public void checkPassword() {
+
+        // Check what chars are contained in password
+
+        if (!password.equals(password.toLowerCase())) {
+            hasUppercase = true;
+        }
+
+        if (!password.equals(password.toUpperCase())) {
+            hasLowercase = true;
+        }
+
+        if (password.matches(".*\\d+.*")) {
+            hasNumber = true;
+        }
+
+        if (!password.matches("[A-Za-z0-9]*")) {
+            hasSpecial = true;
+        }
+
+        fillArrayList();
+    }
+
+    public void fillArrayList() {
+
+        // Add chars of password to one list
+
+        passwordChars.clear();
+
+        if (hasUppercase) {
+
+            for (int i = 0; i < uppercaseStrings.length; i++) {
+
+                passwordChars.add(uppercaseStrings[i]);
+            }
+        }
+
+        if (hasLowercase) {
+
+            for (int i = 0; i < lowercaseStrings.length; i++) {
+
+                passwordChars.add(lowercaseStrings[i]);
+            }
+        }
+
+        if (hasNumber) {
+
+            for (int i = 0; i < numbersStrings.length; i++) {
+
+                passwordChars.add(numbersStrings[i]);
+            }
+        }
+
+        if (hasSpecial) {
+
+            for (int i = 0; i < specialsStrings.length; i++) {
+
+                passwordChars.add(specialsStrings[i]);
+            }
+        }
+
+        calculateTime();
+    }
+
+    public void calculateTime() {
+
+        int charsetLength = passwordChars.size();
+        System.out.println("charset length: " + charsetLength);
+
+        long possibleCombinations = (int) (Math.pow(charsetLength, passwordLength));
+        System.out.println("possible combinations: " + possibleCombinations);
+
+        int keysPerSecond = 250000;
+
+        int timeToHack = (int) (possibleCombinations/keysPerSecond);
+        System.out.println("Seconds to hack Password: " + timeToHack);
+
+        hours = timeToHack / 3600;
+        minutes = (timeToHack % 3600) / 60;
+        seconds = timeToHack % 60;
+
+        String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        System.out.println("Formatted time: " + timeString);
+
+        time = hours + " hours " + minutes + " minutes " + seconds + " seconds";
+
+        setTime();
+    }
+
+    public void setTime() {
+
+        TextView textViewDuration = (TextView)findViewById(R.id.textViewDuration);
+
+        textViewDuration.setText(time);
+
+        setSecurityLevel();
+    }
+
+    public void setSecurityLevel() {
+
+        TextView textViewSecurityLevelValue = (TextView)findViewById(R.id.textViewSecurityLevelValue);
+
+        if (minutes == 0 && hours == 0) {
+            securityLevel = 1;
+        }
+
+        if (minutes < 0 && hours == 0) {
+            securityLevel = 2;
+        }
+
+        if (minutes < 0 && hours < 0) {
+            securityLevel = 3;
+        }
+
+        textViewSecurityLevelValue.setText(String.valueOf(securityLevel));
     }
 }
