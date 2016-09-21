@@ -15,34 +15,4 @@
         android:textSize="20dp"
         android:textColor="@android:color/black" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password \n Generator"
-        android:id="@+id/buttonPWGenerator"
-        android:layout_gravity="left|top"
-        android:textSize="10dp"
-        android:onClick="buttonGoToGeneratePassword"
-        android:background="@android:color/holo_blue_light" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Easy to \n Remember"
-        android:id="@+id/buttonEasyPassword"
-        android:layout_gravity="center_horizontal|top"
-        android:textSize="10dp"
-        android:onClick="buttonGoToEasyPassword"
-        android:background="@android:color/holo_blue_light" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Check Safety"
-        android:id="@+id/buttonCheckSafety"
-        android:layout_gravity="right|top"
-        android:textSize="12dp"
-        android:onClick="buttonGoToCheckSafety"
-        android:background="@android:color/holo_blue_light" />
-
 </FrameLayout>

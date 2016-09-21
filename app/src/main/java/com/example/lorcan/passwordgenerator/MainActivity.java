@@ -75,15 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.item_option1_settings:
 
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
-
                 startActivity(new Intent(getApplicationContext(), ActivitySettings.class));
 
                 break;
 
             case R.id.item_option2_help:
-
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getApplicationContext(), ActivityHelp.class));
 
@@ -91,15 +87,11 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.item_option3_feedback:
 
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
-
                 startActivity(new Intent(getApplicationContext(), ActivityFeedback.class));
 
                 break;
 
             case R.id.item_option4_about:
-
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getApplicationContext(), ActivityAbout.class));
 
@@ -202,13 +194,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (!atLeastOneCheckboxChecked) {
 
-            Toast.makeText(MainActivity.this, "Choose at least one CheckBox!", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Choose at least one CheckBox!", Toast.LENGTH_SHORT).show();
             textViewPassword.setText("Password");
             buttonCopyPassword.setVisibility(View.INVISIBLE);
         }
         else {
 
-            Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_SHORT).show();
 
             /*
              * From Class File "FillArrayList"
@@ -232,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
         ClipData clipData = ClipData.newPlainText("copy password", finalPassword);
         clipboardManager.setPrimaryClip(clipData);
 
-        Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_SHORT).show();
     }
 
 

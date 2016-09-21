@@ -51,15 +51,11 @@ public class ActivityEasyRemember extends AppCompatActivity {
 
             case R.id.item_option1_settings:
 
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
-
                 startActivity(new Intent(getApplicationContext(), ActivitySettings.class));
 
                 break;
 
             case R.id.item_option2_help:
-
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getApplicationContext(), ActivityHelp.class));
 
@@ -67,15 +63,11 @@ public class ActivityEasyRemember extends AppCompatActivity {
 
             case R.id.item_option3_feedback:
 
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
-
                 startActivity(new Intent(getApplicationContext(), ActivityFeedback.class));
 
                 break;
 
             case R.id.item_option4_about:
-
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getApplicationContext(), ActivityAbout.class));
 
@@ -141,7 +133,7 @@ public class ActivityEasyRemember extends AppCompatActivity {
         }
 
         else {
-            Toast.makeText(ActivityEasyRemember.this, "Choose one RadioButton!", Toast.LENGTH_LONG).show();
+            Toast.makeText(ActivityEasyRemember.this, "Choose one RadioButton!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -153,7 +145,7 @@ public class ActivityEasyRemember extends AppCompatActivity {
         ClipData clipData = ClipData.newPlainText("copy easy password", easyPassword);
         clipboardManager.setPrimaryClip(clipData);
 
-        Toast.makeText(ActivityEasyRemember.this, "Easy Password copied!", Toast.LENGTH_LONG).show();
+        Toast.makeText(ActivityEasyRemember.this, "Easy Password copied!", Toast.LENGTH_SHORT).show();
     }
 
     public void getClickedRadioButton(RadioButton radioButtonHash, RadioButton radioButtonAnd, RadioButton radioButtonPlus) {

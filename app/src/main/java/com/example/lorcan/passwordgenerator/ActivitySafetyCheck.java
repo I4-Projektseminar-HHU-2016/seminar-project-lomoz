@@ -65,15 +65,11 @@ public class ActivitySafetyCheck extends AppCompatActivity {
 
             case R.id.item_option1_settings:
 
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
-
                 startActivity(new Intent(getApplicationContext(), ActivitySettings.class));
 
                 break;
 
             case R.id.item_option2_help:
-
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getApplicationContext(), ActivityHelp.class));
 
@@ -81,15 +77,11 @@ public class ActivitySafetyCheck extends AppCompatActivity {
 
             case R.id.item_option3_feedback:
 
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
-
                 startActivity(new Intent(getApplicationContext(), ActivityFeedback.class));
 
                 break;
 
             case R.id.item_option4_about:
-
-                Toast.makeText(getApplicationContext(), item.toString(),Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getApplicationContext(), ActivityAbout.class));
 
@@ -149,7 +141,7 @@ public class ActivitySafetyCheck extends AppCompatActivity {
         password = editTextPassword.getText().toString();
 
         if (password.length() == 0) {
-            Toast.makeText(ActivitySafetyCheck.this, "No Password entered!", Toast.LENGTH_LONG).show();
+            Toast.makeText(ActivitySafetyCheck.this, "No Password entered!", Toast.LENGTH_SHORT).show();
         }
 
         System.out.println("password: " + password);
