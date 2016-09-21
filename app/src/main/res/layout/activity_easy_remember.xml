@@ -37,7 +37,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Chose a seperator"
+        android:text="Chose a separator"
         android:id="@+id/textViewChoseSeperator"
         android:layout_gravity="top|center_horizontal"
         android:textAlignment="center"
@@ -51,7 +51,8 @@
         android:text="Generate"
         android:id="@+id/buttonGenerateEasyPassword"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="160dp" />
+        android:layout_marginBottom="160dp"
+        android:onClick="buttonGenerateEasyPasswordClicked" />
 
     <TextView
         android:layout_width="fill_parent"

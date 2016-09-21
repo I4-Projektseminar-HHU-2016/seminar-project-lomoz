@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class ActivityEasyRemember extends AppCompatActivity {
@@ -116,5 +115,42 @@ public class ActivityEasyRemember extends AppCompatActivity {
             e.printStackTrace();
             System.out.println("Caught NullPointerException!!");
         }
+    }
+
+    public void buttonGenerateEasyPasswordClicked(View v) {
+
+        RadioButton radioButtonHash = (RadioButton)findViewById(R.id.radioButtonHash);
+        RadioButton radioButtonAnd = (RadioButton)findViewById(R.id.radioButtonAnd);
+        RadioButton radioButtonPlus = (RadioButton)findViewById(R.id.radioButtonPlus);
+
+        if (radioButtonHash.isChecked() || radioButtonAnd.isChecked() || radioButtonPlus.isChecked()) {
+
+            getClickedRadioButton(radioButtonHash, radioButtonAnd, radioButtonPlus);
+        }
+
+        else {
+            Toast.makeText(ActivityEasyRemember.this, "Choose one RadioButton!", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public void getClickedRadioButton(RadioButton radioButtonHash, RadioButton radioButtonAnd, RadioButton radioButtonPlus) {
+
+        String separator = "";
+
+        if (radioButtonHash.isChecked()) {
+            separator = "#";
+        }
+
+        if (radioButtonAnd.isChecked()) {
+            separator = "&";
+        }
+
+        if (radioButtonPlus.isChecked()) {
+            separator = "+";
+        }
+
+        System.out.println("Chosen separator: " + separator);
+
     }
 }
