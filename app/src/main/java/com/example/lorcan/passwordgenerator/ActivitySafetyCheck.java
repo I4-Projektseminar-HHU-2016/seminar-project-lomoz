@@ -35,11 +35,12 @@ public class ActivitySafetyCheck extends AppCompatActivity {
 
     private static String time;
 
-    private static int hours;
-    private static int minutes;
-    private static int seconds;
+    private static int hours = 0;
+    private static int days = 0;
+    private static int month = 0;
+    private static int years = 0;
 
-    private static int securityLevel;
+    private static String securityLevel = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -235,14 +236,14 @@ public class ActivitySafetyCheck extends AppCompatActivity {
         int timeToHack = (int) (possibleCombinations/keysPerSecond);
         System.out.println("Seconds to hack Password: " + timeToHack);
 
+        int seconds = timeToHack % 60;
+        int minutes = (timeToHack % 3600) / 60;
         hours = timeToHack / 3600;
-        minutes = (timeToHack % 3600) / 60;
-        seconds = timeToHack % 60;
+        days = hours / 24;
+        month = days / 30;
+        years = month / 12;
 
-        String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-        System.out.println("Formatted time: " + timeString);
-
-        time = hours + " hours " + minutes + " minutes " + seconds + " seconds";
+        time = years + " years " + month + " month " + days + " days " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
 
         setTime();
     }
@@ -260,18 +261,28 @@ public class ActivitySafetyCheck extends AppCompatActivity {
 
         TextView textViewSecurityLevelValue = (TextView)findViewById(R.id.textViewSecurityLevelValue);
 
-        if (minutes == 0 && hours == 0) {
-            securityLevel = 1;
+        securityLevel = "Security Level";
+
+        if (years < 0) {
+            securityLevel = "5 - careless";
         }
 
-        if (minutes < 0 && hours == 0) {
-            securityLevel = 2;
+        else if (month < 0) {
+            securityLevel = "4 - low";
         }
 
-        if (minutes < 0 && hours < 0) {
-            securityLevel = 3;
+        else if (days < 0) {
+            securityLevel = "3 - medium";
         }
 
-        textViewSecurityLevelValue.setText(String.valueOf(securityLevel));
+        else if (hours < 0) {
+            securityLevel = "2 - high";
+        }
+
+        else {
+            securityLevel = "1 - very high";
+        }
+
+        textViewSecurityLevelValue.setText(securityLevel);
     }
 }
