@@ -1,8 +1,9 @@
 # seminar-project-lomoz
 
-Dokumentation:
+Dokumentation: "Lorcan Mozis, 2234829, lomoz.pdf"
 
-Verwendung der App: "Lorcan Mozis, 2234829, lomoz.pdf"
+
+Verwendung der App:
 
 1. APK „PasswordGenerator.apk“ auf das Zielgerät downloaden.
 2. APK installieren.
