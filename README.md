@@ -2,8 +2,7 @@
 
 Dokumentation: "Lorcan Mozis, 2234829, lomoz.pdf"
 
-
-Verwendung der App:
+Installation und Benutzung der App:
 
 1. APK „PasswordGenerator.apk“ auf das Zielgerät downloaden.
 2. APK installieren.
