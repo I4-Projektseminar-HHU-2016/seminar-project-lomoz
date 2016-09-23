@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
      * Options Menu Tutorial from:
      * "Android Studio Tutorials - 32 : Options Menu in Android (Menu's)"
      * by "rams android"
+     * Code Lines: 64 - 103
+     * Link https://www.youtube.com/watch?v=empirRnFzwM
      */
 
     @Override
@@ -145,8 +147,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-             * From YouTube: "Android Tutorial for Beginners 19 #SeekBar" by "ProgrammingKnowledge"
-             */
+     * From YouTube: "Android Tutorial for Beginners 19 #SeekBar" by "ProgrammingKnowledge"
+     * Link: https://www.youtube.com/watch?v=l5FrTkGoeX8
+     * Line 153 to 177
+     * Changes due to my use
+     */
     public void setSeekBar() {
 
         SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
@@ -184,49 +189,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    public void buttonGeneratePasswordClicked(View v) {
-
-        TextView textViewPassword = (TextView) findViewById(R.id.textViewPassword);
-        Button buttonCopyPassword = (Button) findViewById(R.id.buttonCopyPassword);
-
-        boolean atLeastOneCheckboxChecked = uppercaseOn || lowercaseOn || numbersOn || specialsOn;
-
-        if (!atLeastOneCheckboxChecked) {
-
-            Toast.makeText(MainActivity.this, "Choose at least one CheckBox!", Toast.LENGTH_SHORT).show();
-            textViewPassword.setText("Password");
-            buttonCopyPassword.setVisibility(View.INVISIBLE);
-        }
-        else {
-
-            Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_SHORT).show();
-
-            /*
-             * From Class File "FillArrayList"
-             */
-            FillArrayList var = new FillArrayList();
-            var.fillPasswordArrayListChars(passwordChars, uppercaseOn, lowercaseOn, numbersOn, specialsOn);
-
-            textViewPassword.setText(finalPassword);
-            buttonCopyPassword.setVisibility(View.VISIBLE);
-        }
-
-        System.out.println("At least one CheckBox checked:  " + atLeastOneCheckboxChecked + "\n");
-
-    }
-
-    public void buttonCopyPasswordClicked(View v) {
-
-        System.out.println("Button to Copy Password clicked!");
-
-        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        ClipData clipData = ClipData.newPlainText("copy password", finalPassword);
-        clipboardManager.setPrimaryClip(clipData);
-
-        Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_SHORT).show();
-    }
-
 
     public void uppercaseChecked(View v) {
         //code to check if this checkbox is checked!
@@ -295,6 +257,55 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Specials contained: " + specialsOn);
 
     }
+
+    public void buttonGeneratePasswordClicked(View v) {
+
+        TextView textViewPassword = (TextView) findViewById(R.id.textViewPassword);
+        Button buttonCopyPassword = (Button) findViewById(R.id.buttonCopyPassword);
+
+        boolean atLeastOneCheckboxChecked = uppercaseOn || lowercaseOn || numbersOn || specialsOn;
+
+        if (!atLeastOneCheckboxChecked) {
+
+            Toast.makeText(MainActivity.this, "Choose at least one CheckBox!", Toast.LENGTH_SHORT).show();
+            textViewPassword.setText("Password");
+            buttonCopyPassword.setVisibility(View.INVISIBLE);
+        }
+        else {
+
+            /*
+             * From Class File "FillArrayList"
+             */
+            FillArrayList var = new FillArrayList();
+            var.fillPasswordArrayListChars(passwordChars, uppercaseOn, lowercaseOn, numbersOn, specialsOn);
+
+            textViewPassword.setText(finalPassword);
+            buttonCopyPassword.setVisibility(View.VISIBLE);
+
+            Toast.makeText(MainActivity.this, "New Password generated", Toast.LENGTH_SHORT).show();
+        }
+
+        System.out.println("At least one CheckBox checked:  " + atLeastOneCheckboxChecked + "\n");
+
+    }
+
+    public void buttonCopyPasswordClicked(View v) {
+
+        System.out.println("Button to Copy Password clicked!");
+
+        /*
+         * From Stackoverflow: How to Copy Text to Clip Board in Android?
+         * Link: http://stackoverflow.com/questions/19253786/how-to-copy-text-to-clip-board-in-android
+         * Line 302 - 304
+         */
+
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("copy password", finalPassword);
+        clipboardManager.setPrimaryClip(clipData);
+
+        Toast.makeText(MainActivity.this, "Password copied!", Toast.LENGTH_SHORT).show();
+    }
+
 
     /*
      * The method generates, with the parameters chosen
