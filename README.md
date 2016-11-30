@@ -68,6 +68,10 @@ Android Studio is based on IntelliJ by [JetBrains](https://www.jetbrains.com) an
 
 Lorcan Mozis
 
+##Version
+
+1.0
+
 ##Dokumentation
 
 Filename: "Lorcan Mozis, 2234829, lomoz.pdf"
