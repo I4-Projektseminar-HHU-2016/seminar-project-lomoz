@@ -4,37 +4,37 @@
 It also generates passwords, which are easy to remember, but are safe as well.
 The third function is safety check for existing passwords.
 
-This is the normal password generator with the default settings.
+This is the normal password generator with the default settings:
 
 ![](1.jpg "Normal password generator")
 
 
-This is an example for a new generated password. The user now has the option to copy the password to the clipboard with a button click.
+This is an example for a new generated password. The user now has the option to copy the password to the clipboard with a button click:
 
 ![](5.jpg "Normal password example")
 
 
-This is the default screen for the passwords, which are easy to remember.
+This is the default screen for the passwords, which are easy to remember:
 
 ![](2.jpg "Easy password generator")
 
 
-This is an example for a new generated "easy-to-remember" password. The user has the option to copy the password to the clipboard the same way it works for normal passwords.
+This is an example for a new generated "easy-to-remember" password. The user has the option to copy the password to the clipboard the same way it works for normal passwords:
 
 ![](6.jpg "Easy password example1")
 
 
-This is another example for an easy to remember password with another separator.
+This is another example for an easy to remember password with another separator:
 
 ![](7.jpg "Easy password example2")
 
 
-This is the safety check for existing passwords.
+This is the safety check for existing passwords:
 
 ![](3.jpg "Safety Check")
 
 
-This is the options menu.
+This is the options menu:
 
 ![](4.jpg "Options Menu")
 
